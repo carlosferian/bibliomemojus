@@ -1,0 +1,79 @@
+backend:
+  name: git-gateway
+  branch: master
+
+locale: pt
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: noticias
+    label: Notícias
+    folder: content/noticias
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: Título, name: titulo, widget: string }
+      - { label: Data (ex: Maio 2022 ou 2023), name: data, widget: string }
+      - label: Tag
+        name: tag
+        widget: select
+        options:
+          - Institucional
+          - Grupos de Trabalho
+          - Publicação
+          - Evento
+          - Aviso
+          - Enquetes
+          - Outro
+      - { label: Resumo, name: resumo, widget: text }
+      - { label: Link Interno (ex: /eventos), name: link_interno, widget: string, required: false, default: "" }
+      - { label: Link Externo (URL completa), name: link_externo, widget: string, required: false, default: "" }
+      - { label: Ordem de exibição, name: ordem, widget: number, default: 99 }
+
+  - name: eventos
+    label: Eventos
+    folder: content/eventos
+    create: true
+    slug: "{{numero}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Número (ex: 01)", name: numero, widget: string }
+      - label: Tag
+        name: tag
+        widget: select
+        options: [ENABIJUD, ENAM, Guia, Outro]
+      - { label: Título, name: titulo, widget: string }
+      - { label: Descrição, name: descricao, widget: text }
+      - { label: URL do evento, name: url, widget: string }
+      - { label: Ordem de exibição, name: ordem, widget: number, default: 99 }
+
+  - name: publicacoes
+    label: Publicações
+    folder: content/publicacoes
+    create: true
+    slug: "{{ordem}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Ícone (emoji)", name: icone, widget: string, default: "📄" }
+      - { label: Título, name: titulo, widget: string }
+      - { label: Descrição, name: descricao, widget: text }
+      - { label: URL do link, name: link, widget: string }
+      - { label: Texto do botão (ex: Ver Publicações), name: link_texto, widget: string }
+      - label: Tag
+        name: tag
+        widget: select
+        options:
+          - Diagnóstico
+          - Publicações
+          - Participação
+          - Parceria
+          - Sustentabilidade
+          - Inovação
+          - Outro
+      - { label: Ordem de exibição, name: ordem, widget: number, default: 99 }

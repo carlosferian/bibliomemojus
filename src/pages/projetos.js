@@ -1,59 +1,31 @@
 import React, { useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
-const PROJECTS = [
-  {
-    icon: "📊",
-    title: "Diagnóstico da Rede",
-    desc: "Painel interativo com dados situacionais de todas as Bibliotecas Judiciárias integrantes. Desenvolvido com Power BI, apresenta o perfil das coleções, recursos humanos e infraestrutura.",
-    link: "https://app.powerbi.com/view?r=eyJrIjoiN2EyZGY2N2QtNmMyZC00NDcyLTgzNmYtYmYxOWJlZWI1Mzg2IiwidCI6IjExMjBlOWFjLTRmMGUtNDkxOS1hZDY4LTU4ZTU5YzIwNDZjZiJ9",
-    linkText: "Abrir Power BI",
-    tag: "Diagnóstico",
-  },
-  {
-    icon: "📚",
-    title: "Publicações da Rede",
-    desc: "Relatórios, artigos e materiais técnicos produzidos pelos Grupos de Trabalho da Bibliomemojus. Acervo em crescimento contínuo com contribuições dos profissionais da rede.",
-    link: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/publica%C3%A7%C3%B5es",
-    linkText: "Ver Publicações",
-    tag: "Publicações",
-  },
-  {
-    icon: "🗳️",
-    title: "Enquetes da Rede",
-    desc: "As enquetes coletam a opinião dos profissionais sobre temas estratégicos para orientar as decisões dos GTs. Abertas a todos os membros da rede.",
-    link: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes",
-    linkText: "Participar",
-    tag: "Participação",
-  },
-  {
-    icon: "🤝",
-    title: "Cooperação com a MEMOJUS",
-    desc: "A Bibliomemojus integra o ecossistema MEMOJUS BRASIL, articulando Arquivos, Museus e Bibliotecas do Poder Judiciário em torno de objetivos comuns de preservação da memória institucional.",
-    link: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/sobre/quem-somos",
-    linkText: "Saiba mais",
-    tag: "Parceria",
-  },
-  {
-    icon: "🌱",
-    title: "Agenda 2030 e ODS",
-    desc: "Projeto transversal de alinhamento das ações das bibliotecas judiciárias aos Objetivos de Desenvolvimento Sustentável da ONU, liderado pelo GT6.",
-    link: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt6-agenda-2030",
-    linkText: "Ver GT 6",
-    tag: "Sustentabilidade",
-  },
-  {
-    icon: "💡",
-    title: "Inovação nas Bibliotecas",
-    desc: "Iniciativas de incorporação de inteligência artificial, automação e novas tecnologias aos serviços das bibliotecas judiciárias, desenvolvidas pelo GT5.",
-    link: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt5-inova%C3%A7%C3%A3o",
-    linkText: "Ver GT 5",
-    tag: "Inovação",
-  },
-]
-
 const ProjetosPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: { fields: { collection: { eq: "publicacoes" } } }
+        sort: { frontmatter: { ordem: ASC } }
+      ) {
+        nodes {
+          frontmatter {
+            icone
+            titulo
+            descricao
+            link
+            link_texto
+            tag
+          }
+        }
+      }
+    }
+  `)
+
+  const PROJECTS = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => {
@@ -179,12 +151,12 @@ const ProjetosPage = () => {
                 rel="noreferrer"
                 className={`project-card reveal d${(i % 3) + 1}`}
               >
-                <span className="project-card-icon">{proj.icon}</span>
+                <span className="project-card-icon">{proj.icone}</span>
                 <p className="news-date">{proj.tag}</p>
-                <p className="project-card-title">{proj.title}</p>
-                <p className="project-card-desc">{proj.desc}</p>
+                <p className="project-card-title">{proj.titulo}</p>
+                <p className="project-card-desc">{proj.descricao}</p>
                 <span className="project-card-link">
-                  {proj.linkText} →
+                  {proj.link_texto} →
                 </span>
               </a>
             ))}

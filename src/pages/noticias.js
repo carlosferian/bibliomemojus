@@ -1,58 +1,31 @@
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
-const NEWS = [
-  {
-    date: "Maio 2022",
-    title: "Bibliomemojus é criada oficialmente",
-    excerpt:
-      "Em 16 de maio de 2022, durante o II Encontro Nacional de Memória do Poder Judiciário, a rede Bibliomemojus foi formalmente criada por adesão espontânea de profissionais de todo o Brasil.",
-    tag: "Institucional",
-  },
-  {
-    date: "2022",
-    title: "Sete Grupos de Trabalho em atividade",
-    excerpt:
-      "A Bibliomemojus estruturou sete Grupos de Trabalho cobrindo Gestão, Memória, Redes, Biblioteca Digital, Inovação, Agenda 2030 e Capacitação. Cada GT desenvolve planos de ação próprios.",
-    tag: "Grupos de Trabalho",
-    internal: "/#grupos",
-  },
-  {
-    date: "2023",
-    title: "Diagnóstico da Rede concluído",
-    excerpt:
-      "O levantamento situacional das bibliotecas judiciárias foi concluído com total adesão das instituições integrantes. Os resultados estão disponíveis em painel interativo do Power BI.",
-    tag: "Publicação",
-    internal: "/projetos",
-  },
-  {
-    date: "2023",
-    title: "3º ENABIJUD apresenta resultados",
-    excerpt:
-      "A terceira edição do Encontro Nacional de Bibliotecas Judiciárias apresentou os resultados consolidados dos sete GTs e o painel de Business Intelligence com dados diagnósticos da rede.",
-    tag: "Evento",
-    internal: "/eventos",
-  },
-  {
-    date: "2024",
-    title: "Novo site da Bibliomemojus no ar",
-    excerpt:
-      "O site da Bibliomemojus foi reformulado para facilitar o acesso aos conteúdos dos Grupos de Trabalho, eventos, notícias e publicações da rede nacional.",
-    tag: "Aviso",
-  },
-  {
-    date: "Aberto",
-    title: "Enquetes da rede abertas para participação",
-    excerpt:
-      "As enquetes da Bibliomemojus estão abertas para participação. Sua opinião orienta as decisões estratégicas da rede. Acesse o Google Sites para responder.",
-    tag: "Enquetes",
-    external: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes",
-  },
-]
-
 const NoticiasPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: { fields: { collection: { eq: "noticias" } } }
+        sort: { frontmatter: { ordem: ASC } }
+      ) {
+        nodes {
+          frontmatter {
+            titulo
+            data
+            tag
+            resumo
+            link_interno
+            link_externo
+          }
+        }
+      }
+    }
+  `)
+
+  const NEWS = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => {
@@ -106,22 +79,22 @@ const NoticiasPage = () => {
             {NEWS.map((item, i) => {
               const inner = (
                 <>
-                  <p className="news-date">{item.tag} · {item.date}</p>
-                  <p className="news-title">{item.title}</p>
-                  <p className="news-excerpt">{item.excerpt}</p>
+                  <p className="news-date">{item.tag} · {item.data}</p>
+                  <p className="news-title">{item.titulo}</p>
+                  <p className="news-excerpt">{item.resumo}</p>
                 </>
               )
               const cls = `news-card reveal d${(i % 3) + 1}`
-              if (item.internal) {
+              if (item.link_interno) {
                 return (
-                  <Link key={i} className={cls} to={item.internal}>
+                  <Link key={i} className={cls} to={item.link_interno}>
                     {inner}
                   </Link>
                 )
               }
-              if (item.external) {
+              if (item.link_externo) {
                 return (
-                  <a key={i} className={cls} href={item.external} target="_blank" rel="noreferrer">
+                  <a key={i} className={cls} href={item.link_externo} target="_blank" rel="noreferrer">
                     {inner}
                   </a>
                 )

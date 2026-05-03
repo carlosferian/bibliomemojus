@@ -8,9 +8,22 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: { name: `images`, path: `${__dirname}/src/images` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `noticias`, path: `${__dirname}/content/noticias` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `eventos`, path: `${__dirname}/content/eventos` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `publicacoes`, path: `${__dirname}/content/publicacoes` },
     },
     {
       resolve: `gatsby-plugin-manifest`,

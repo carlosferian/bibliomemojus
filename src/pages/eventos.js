@@ -1,46 +1,30 @@
 import React, { useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
-const EVENTS = [
-  {
-    num: "01",
-    tag: "ENABIJUD",
-    title: "1º Encontro Nacional de Bibliotecas Judiciárias",
-    desc: "Primeira edição que inaugurou o diálogo nacional entre bibliotecas do Poder Judiciário. Reuniu profissionais de diferentes ramos do Judiciário para debater os desafios e perspectivas das bibliotecas especializadas.",
-    url: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enabijud/1o-enabijud",
-  },
-  {
-    num: "02",
-    tag: "ENABIJUD",
-    title: "2º Encontro Nacional de Bibliotecas Judiciárias",
-    desc: "Segunda edição, consolidando a rede e expandindo a participação de todo o Brasil. Apresentação dos primeiros resultados dos Grupos de Trabalho e definição de novas prioridades estratégicas.",
-    url: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enabijud/2o-enabijud",
-  },
-  {
-    num: "03",
-    tag: "ENABIJUD",
-    title: "3º Encontro Nacional de Bibliotecas Judiciárias",
-    desc: "Terceira edição com apresentação do Diagnóstico da Rede e resultados consolidados dos sete GTs. Painel interativo de Business Intelligence com dados situacionais das bibliotecas judiciárias do país.",
-    url: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enabijud/3o-enabijud",
-  },
-  {
-    num: "04",
-    tag: "ENAM",
-    title: "Encontro Nacional de Arquivos e Memória",
-    desc: "Conecta a rede ao universo da gestão documental e da memória do Judiciário. Promove o diálogo entre as três áreas da MEMOJUS: Arquivos, Museus e Bibliotecas.",
-    url: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enam",
-  },
-  {
-    num: "05",
-    tag: "Guia",
-    title: "Como sediar o ENABIJUD",
-    desc: "Guia completo para instituições interessadas em sediar futuras edições do encontro nacional. Contém orientações sobre organização, infraestrutura, programação e gestão do evento.",
-    url: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enabijud/como-sediar-o-enabijud",
-  },
-]
-
 const EventosPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: { fields: { collection: { eq: "eventos" } } }
+        sort: { frontmatter: { ordem: ASC } }
+      ) {
+        nodes {
+          frontmatter {
+            numero
+            tag
+            titulo
+            descricao
+            url
+          }
+        }
+      }
+    }
+  `)
+
+  const EVENTS = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => {
@@ -106,11 +90,11 @@ const EventosPage = () => {
                 style={{ textDecoration: "none" }}
               >
                 <div className="event-detail-header">
-                  <div className="event-detail-num">{ev.num}</div>
+                  <div className="event-detail-num">{ev.numero}</div>
                   <div className="event-detail-meta">
                     <span className="ev-tag">{ev.tag}</span>
-                    <h3>{ev.title}</h3>
-                    <p>{ev.desc}</p>
+                    <h3>{ev.titulo}</h3>
+                    <p>{ev.descricao}</p>
                   </div>
                   <span
                     className="ev-arrow"
