@@ -101,18 +101,6 @@ def parse_date(entry):
         return datetime.now().strftime(f"{MONTHS_PT[datetime.now().month - 1]} %Y")
 
 
-def extract_real_url(entry):
-    """Extrai o URL original do artigo a partir do HTML do summary do Google News."""
-    summary_html = entry.get("summary") or entry.get("description") or ""
-    # O Google News embute o link real como primeiro <a href="..."> no summary
-    matches = re.findall(r'href="(https?://[^"]+)"', summary_html)
-    for url in matches:
-        if "google.com" not in url and "googleapis.com" not in url:
-            return url
-    # Fallback: o entry.link do Google News (URL de rastreamento)
-    return (entry.get("link") or "").strip()
-
-
 def clean_title(raw_title):
     """Remove o sufixo '- www.fonte.com' que o Google News adiciona ao título."""
     if " - " in raw_title:
@@ -124,23 +112,82 @@ def extract_source(raw_title):
     """Extrai o nome da fonte do sufixo do título do Google News."""
     if " - " in raw_title:
         return raw_title.rsplit(" - ", 1)[1].strip()
-    # Tenta pegar do campo source do feedparser
     return "Web"
+
+
+def extract_urls_from_raw_xml(raw_xml):
+    """
+    Extrai os URLs reais dos blocos CDATA do XML bruto do Google News.
+    O Google News embute o link original no <description> assim:
+      <description><![CDATA[<a href="URL_REAL">Título</a>...]]></description>
+    O feedparser processa esse HTML e pode perder o href; por isso lemos o
+    XML bruto diretamente.
+    """
+    real_urls = []
+
+    # Padrão 1: CDATA explícito
+    cdata_blocks = re.findall(
+        r"<description><!\[CDATA\[(.*?)\]\]></description>",
+        raw_xml,
+        re.DOTALL,
+    )
+    # Padrão 2: description sem CDATA (algumas variantes do feed)
+    if not cdata_blocks:
+        cdata_blocks = re.findall(
+            r"<description>(.*?)</description>",
+            raw_xml,
+            re.DOTALL,
+        )
+
+    for block in cdata_blocks:
+        match = re.search(
+            r'href=["\']?(https?://(?!(?:news|www)\.google\.com)[^"\'>\s]+)["\']?',
+            block,
+        )
+        real_urls.append(match.group(1) if match else None)
+
+    return real_urls
 
 
 def fetch_feed(feed_url, tag):
     try:
-        d = feedparser.parse(feed_url)
+        # Busca o XML bruto para extrair URLs antes que o feedparser processe
+        resp = requests.get(
+            feed_url,
+            timeout=15,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; RSS reader/1.0)"},
+        )
+        resp.raise_for_status()
+        raw_xml = resp.text
+
+        # Extrai URLs reais do XML bruto (índice 0 é o <description> do canal)
+        real_urls = extract_urls_from_raw_xml(raw_xml)
+        print(f"  URLs reais encontradas no XML: {len(real_urls)}")
+
+        # Usa feedparser apenas para os metadados (título, data, etc.)
+        d = feedparser.parse(resp.content)
+
         items = []
-        for entry in d.entries[:15]:
+        for i, entry in enumerate(d.entries[:15]):
             raw_title = (entry.get("title") or "").strip()
             title     = clean_title(raw_title)
             source    = extract_source(raw_title)
-            real_url  = extract_real_url(entry)
-            summary   = re.sub(r"<[^>]+>", "", entry.get("summary") or entry.get("description") or "").strip()
-            # Remove o trecho "SourceName" que aparece no texto do summary
-            summary   = re.sub(r"\s*\|\s*" + re.escape(source) + r"\s*$", "", summary).strip()
-            summary   = summary[:400]
+
+            # O índice +1 pula o <description> do canal; garante fallback
+            url_index = i + 1
+            real_url  = (
+                real_urls[url_index]
+                if url_index < len(real_urls) and real_urls[url_index]
+                else (entry.get("link") or "").strip()
+            )
+
+            summary = re.sub(
+                r"<[^>]+>",
+                "",
+                entry.get("summary") or entry.get("description") or "",
+            ).strip()
+            summary = re.sub(r"\s*\|\s*" + re.escape(source) + r"\s*$", "", summary).strip()
+            summary = summary[:400]
 
             if title and real_url and is_relevant(title, summary):
                 items.append({
