@@ -8,6 +8,9 @@ permissions:
   contents: write
   issues: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   publica:
     if: github.event.label.name == 'publicar'
