@@ -101,20 +101,52 @@ def parse_date(entry):
         return datetime.now().strftime(f"{MONTHS_PT[datetime.now().month - 1]} %Y")
 
 
+def extract_real_url(entry):
+    """Extrai o URL original do artigo a partir do HTML do summary do Google News."""
+    summary_html = entry.get("summary") or entry.get("description") or ""
+    # O Google News embute o link real como primeiro <a href="..."> no summary
+    matches = re.findall(r'href="(https?://[^"]+)"', summary_html)
+    for url in matches:
+        if "google.com" not in url and "googleapis.com" not in url:
+            return url
+    # Fallback: o entry.link do Google News (URL de rastreamento)
+    return (entry.get("link") or "").strip()
+
+
+def clean_title(raw_title):
+    """Remove o sufixo '- www.fonte.com' que o Google News adiciona ao título."""
+    if " - " in raw_title:
+        return raw_title.rsplit(" - ", 1)[0].strip()
+    return raw_title.strip()
+
+
+def extract_source(raw_title):
+    """Extrai o nome da fonte do sufixo do título do Google News."""
+    if " - " in raw_title:
+        return raw_title.rsplit(" - ", 1)[1].strip()
+    # Tenta pegar do campo source do feedparser
+    return "Web"
+
+
 def fetch_feed(feed_url, tag):
     try:
         d = feedparser.parse(feed_url)
         items = []
         for entry in d.entries[:15]:
-            title   = (entry.get("title") or "").strip()
-            link    = (entry.get("link")  or "").strip()
-            summary = re.sub(r"<[^>]+>", "", entry.get("summary") or entry.get("description") or "").strip()
-            summary = summary[:400]
+            raw_title = (entry.get("title") or "").strip()
+            title     = clean_title(raw_title)
+            source    = extract_source(raw_title)
+            real_url  = extract_real_url(entry)
+            summary   = re.sub(r"<[^>]+>", "", entry.get("summary") or entry.get("description") or "").strip()
+            # Remove o trecho "SourceName" que aparece no texto do summary
+            summary   = re.sub(r"\s*\|\s*" + re.escape(source) + r"\s*$", "", summary).strip()
+            summary   = summary[:400]
 
-            if title and link and is_relevant(title, summary):
+            if title and real_url and is_relevant(title, summary):
                 items.append({
                     "title":    title,
-                    "link":     link,
+                    "link":     real_url,
+                    "source":   source,
                     "summary":  summary,
                     "tag":      tag,
                     "pub_date": parse_date(entry),
@@ -132,7 +164,7 @@ def create_issue(item):
 **Tag:** {item['tag']}
 **Resumo:** {item['summary']}
 **Link:** {item['link']}
-**Fonte:** Google News
+**Fonte:** {item['source']}
 
 ---
 > Para **publicar** no site, adicione a label `publicar`.
