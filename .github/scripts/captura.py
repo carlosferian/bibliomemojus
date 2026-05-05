@@ -149,6 +149,33 @@ def extract_urls_from_raw_xml(raw_xml):
     return real_urls
 
 
+def resolve_google_news_url(url, timeout=8):
+    """
+    Segue o redirect HTTP de uma URL do Google News para obter o link real do artigo.
+    URLs no formato /rss/articles/CBMi... redirecionam via HTTP para a fonte original.
+    """
+    if "news.google.com" not in url:
+        return url
+    try:
+        resp = requests.get(
+            url,
+            allow_redirects=True,
+            timeout=timeout,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                )
+            },
+        )
+        final_url = resp.url
+        if "news.google.com" not in final_url:
+            return final_url
+    except Exception as e:
+        print(f"    Aviso: redirect não resolvido ({e})")
+    return url
+
+
 def fetch_feed(feed_url, tag):
     try:
         # Busca o XML bruto para extrair URLs antes que o feedparser processe
@@ -180,6 +207,14 @@ def fetch_feed(feed_url, tag):
                 if url_index < len(real_urls) and real_urls[url_index]
                 else (entry.get("link") or "").strip()
             )
+
+            # Se o CDATA não resolveu, segue o redirect HTTP do Google News
+            if "news.google.com" in real_url:
+                resolved = resolve_google_news_url(real_url)
+                if resolved != real_url:
+                    print(f"    Redirect resolvido → {resolved[:80]}")
+                    real_url = resolved
+                time.sleep(0.5)  # evita rate limit ao resolver redirects
 
             summary = re.sub(
                 r"<[^>]+>",
