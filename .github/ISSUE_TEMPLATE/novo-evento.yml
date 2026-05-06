@@ -1,0 +1,56 @@
+name: 📅 Novo Evento
+description: Adicionar evento ao site (ENABIJUD, ENAM ou outro)
+labels:
+  - candidato-evento
+body:
+  - type: input
+    id: numero
+    attributes:
+      label: Número da edição
+      description: Número sequencial do evento
+      placeholder: "04"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - ENABIJUD
+        - ENAM
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: titulo
+    attributes:
+      label: Título
+      placeholder: "4º Encontro Nacional de Bibliotecas Judiciárias"
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição
+      description: Breve descrição do evento (1 a 2 frases)
+      placeholder: "Quarta edição do encontro nacional, com apresentação dos resultados dos Grupos de Trabalho..."
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Link do evento
+      description: URL da página do evento (Google Sites, site institucional, etc.)
+      placeholder: "https://sites.google.com/view/bibliomemojus/..."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        > **Como publicar:** após preencher e enviar este formulário, adicione a label **`publicar`** para que o evento apareça no site automaticamente.

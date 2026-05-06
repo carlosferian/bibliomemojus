@@ -3,6 +3,7 @@ Captura notícias de feeds RSS e cria GitHub Issues para revisão manual.
 Roda semanalmente via GitHub Actions (captura-noticias.yml).
 """
 
+import html as html_module
 import os
 import re
 import time
@@ -57,10 +58,15 @@ MONTHS_PT = [
 ]
 
 LABELS = [
-    {"name": "candidata",  "color": "fbca04", "description": "Notícia aguardando revisão"},
-    {"name": "publicar",   "color": "0075ca", "description": "Aprovada — publicar no site"},
-    {"name": "publicada",  "color": "0e8a16", "description": "Já publicada no site"},
-    {"name": "ignorar",    "color": "e4e669", "description": "Descartada pelo editor"},
+    {"name": "candidata",             "color": "fbca04", "description": "Notícia aguardando revisão"},
+    {"name": "publicar",              "color": "0075ca", "description": "Aprovada — publicar no site"},
+    {"name": "publicada",             "color": "0e8a16", "description": "Já publicada no site"},
+    {"name": "ignorar",               "color": "e4e669", "description": "Descartada pelo editor"},
+    # Labels para eventos e publicações manuais
+    {"name": "candidato-evento",      "color": "1d76db", "description": "Evento aguardando publicação"},
+    {"name": "publicado-evento",      "color": "0e8a16", "description": "Evento publicado no site"},
+    {"name": "candidata-publicacao",  "color": "bfd4f2", "description": "Publicação aguardando revisão"},
+    {"name": "publicada-publicacao",  "color": "0e8a16", "description": "Publicação no site"},
 ]
 
 
@@ -221,7 +227,11 @@ def fetch_feed(feed_url, tag):
                 "",
                 entry.get("summary") or entry.get("description") or "",
             ).strip()
-            summary = re.sub(r"\s*\|\s*" + re.escape(source) + r"\s*$", "", summary).strip()
+            summary = html_module.unescape(summary)
+            # Remove sufixo de fonte que o Google News adiciona (" | Fonte" ou "\xa0\xa0Fonte")
+            summary = re.sub(
+                r"[\s ]+\|?\s*" + re.escape(source) + r"\s*$", "", summary
+            ).strip()
             summary = summary[:400]
 
             if title and real_url and is_relevant(title, summary):

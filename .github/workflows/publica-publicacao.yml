@@ -1,4 +1,4 @@
-name: Publica Notícia no Site
+name: Publica Publicação no Site
 
 on:
   issues:
@@ -15,7 +15,7 @@ jobs:
   publica:
     if: >
       github.event.label.name == 'publicar' &&
-      contains(github.event.issue.labels.*.name, 'candidata')
+      contains(github.event.issue.labels.*.name, 'candidata-publicacao')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,21 +27,20 @@ jobs:
           python-version: '3.11'
 
       - name: Instalar dependências
-        run: pip install -r .github/scripts/requirements.txt
+        run: pip install requests
 
-      - name: Criar arquivo Markdown da notícia
+      - name: Criar arquivo Markdown da publicação
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-        run: python .github/scripts/publica.py
+        run: python .github/scripts/publica-publicacao.py
 
       - name: Commit e push
         run: |
           git config user.name "bibliomemojus-bot"
           git config user.email "bibliomemojus-bot@users.noreply.github.com"
-          git add content/noticias/
-          git diff --staged --quiet || git commit -m "feat(noticias): publica notícia via issue #${{ github.event.issue.number }}"
+          git add content/publicacoes/
+          git diff --staged --quiet || git commit -m "feat(publicacoes): adiciona publicação via issue #${{ github.event.issue.number }}"
           git push
