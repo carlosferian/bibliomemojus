@@ -90,7 +90,7 @@ def get_existing_urls():
         body = issue.get("body") or ""
         match = re.search(r"\*\*Link:\*\*\s*(https?://\S+)", body)
         if match:
-            urls.add(match.group(1).strip())
+            urls.add(_normalize_url(match.group(1).strip()))
     return urls
 
 
@@ -155,30 +155,18 @@ def extract_urls_from_raw_xml(raw_xml):
     return real_urls
 
 
-def resolve_google_news_url(url, timeout=8):
+def _normalize_url(url):
     """
-    Segue o redirect HTTP de uma URL do Google News para obter o link real do artigo.
-    URLs no formato /rss/articles/CBMi... redirecionam via HTTP para a fonte original.
+    Normaliza URLs do Google News para comparação e armazenamento.
+    Converte /rss/articles/ID?oc=5 → /articles/ID (URL web canônica).
+
+    GitHub Actions recebe 403 ao tentar seguir o redirect HTTP do Google News,
+    pois os IPs dos runners são bloqueados. A conversão textual produz a URL
+    web canônica que redireciona corretamente no navegador do usuário final,
+    sem nenhuma requisição adicional.
     """
-    if "news.google.com" not in url:
-        return url
-    try:
-        resp = requests.get(
-            url,
-            allow_redirects=True,
-            timeout=timeout,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-                )
-            },
-        )
-        final_url = resp.url
-        if "news.google.com" not in final_url:
-            return final_url
-    except Exception as e:
-        print(f"    Aviso: redirect não resolvido ({e})")
+    url = url.split("?")[0]                              # remove ?oc=5
+    url = url.replace("/rss/articles/", "/articles/")   # rss → web
     return url
 
 
@@ -214,13 +202,10 @@ def fetch_feed(feed_url, tag):
                 else (entry.get("link") or "").strip()
             )
 
-            # Se o CDATA não resolveu, segue o redirect HTTP do Google News
+            # Se o CDATA não resolveu, converte para URL web canônica (sem rss/ e sem ?oc=5)
             if "news.google.com" in real_url:
-                resolved = resolve_google_news_url(real_url)
-                if resolved != real_url:
-                    print(f"    Redirect resolvido → {resolved[:80]}")
-                    real_url = resolved
-                time.sleep(0.5)  # evita rate limit ao resolver redirects
+                real_url = _normalize_url(real_url)
+                print(f"    → URL web: {real_url[:80]}")
 
             summary = re.sub(
                 r"<[^>]+>",
@@ -289,10 +274,11 @@ def main():
         print(f"Feed [{feed['tag']}]: {len(items)} item(s) relevante(s)")
 
         for item in items:
-            if item["link"] not in existing_urls:
+            norm_link = _normalize_url(item["link"])
+            if norm_link not in existing_urls:
                 if create_issue(item):
                     created += 1
-                    existing_urls.add(item["link"])
+                    existing_urls.add(norm_link)
                     print(f"  ✓ Issue criada: {item['title'][:70]}")
                 else:
                     print(f"  ✗ Falha ao criar issue: {item['title'][:70]}")
