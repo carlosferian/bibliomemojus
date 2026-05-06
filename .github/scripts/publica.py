@@ -31,6 +31,30 @@ def slugify(text):
 
 
 def parse_issue(body):
+    """Detecta e delega para o parser correto (formulário ou legado)."""
+    if re.search(r'^###\s+', body, re.MULTILINE):
+        return _parse_form(body)
+    return _parse_bold(body)
+
+
+def _parse_form(body):
+    """Parse o corpo gerado pelos formulários GitHub (### Título\\n\\nValor)."""
+    raw = {}
+    parts = re.split(r'^###\s+(.+)$', body, flags=re.MULTILINE)
+    it = iter(parts[1:])
+    for heading in it:
+        raw[heading.strip()] = next(it, '').strip()
+    return {
+        "titulo":       raw.get("Título", ""),
+        "data":         raw.get("Data", ""),
+        "tag":          raw.get("Categoria", ""),
+        "resumo":       raw.get("Resumo", ""),
+        "link_externo": raw.get("Link externo (opcional)", ""),
+    }
+
+
+def _parse_bold(body):
+    """Parse o corpo no formato legado gerado pelo bot de captura (**Campo:** valor)."""
     patterns = {
         "titulo":       r"\*\*Título:\*\*\s*(.+)",
         "data":         r"\*\*Data:\*\*\s*(.+)",

@@ -1,0 +1,56 @@
+name: ✍️ Notícia Autoral do Grupo
+description: Publicar uma notícia escrita pelo próprio grupo (sem link externo obrigatório)
+labels:
+  - candidata
+body:
+  - type: input
+    id: titulo
+    attributes:
+      label: Título
+      placeholder: "GT2 lança guia de boas práticas para catalogação jurídica"
+    validations:
+      required: true
+
+  - type: input
+    id: data
+    attributes:
+      label: Data
+      description: Mês e ano de referência da notícia
+      placeholder: "Maio 2026"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tag
+    attributes:
+      label: Categoria
+      options:
+        - Institucional
+        - Biblioteca Judiciária
+        - Biblioteconomia
+        - Gestão Documental
+        - Ciência da Informação
+    validations:
+      required: true
+
+  - type: textarea
+    id: resumo
+    attributes:
+      label: Resumo
+      description: Texto que aparece no card da notícia no site (até 400 caracteres)
+      placeholder: "O Grupo de Trabalho 2 da Bibliomemojus publicou um guia prático..."
+    validations:
+      required: true
+
+  - type: input
+    id: link_externo
+    attributes:
+      label: Link externo (opcional)
+      description: Se a notícia tiver um link de referência (Google Docs, site, etc.), cole aqui. Deixe em branco se não houver.
+      placeholder: "https://docs.google.com/..."
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        > **Como publicar:** após preencher e enviar este formulário, adicione a label **`publicar`** para que a notícia apareça no site automaticamente.
