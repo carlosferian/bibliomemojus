@@ -1,0 +1,76 @@
+name: 📄 Nova Publicação / Enquete / Documento
+description: Adicionar publicação interna, enquete ou link para Google Docs, Drive ou Forms
+labels:
+  - candidata-publicacao
+body:
+  - type: dropdown
+    id: icone
+    attributes:
+      label: Ícone
+      description: Escolha o ícone que melhor representa o conteúdo
+      options:
+        - "📊 Diagnóstico / Dados"
+        - "📋 Relatório"
+        - "📄 Publicação"
+        - "📝 Documento"
+        - "🗳️ Enquete"
+        - "📚 Acervo / Catálogo"
+        - "🔗 Link Externo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tag
+    attributes:
+      label: Categoria
+      options:
+        - Diagnóstico
+        - Publicação
+        - Enquete
+        - Relatório
+        - Documento
+        - Acervo
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: titulo
+    attributes:
+      label: Título
+      placeholder: "Enquete: Prioridades dos GTs para 2026"
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição
+      description: Breve descrição do conteúdo (1 a 2 frases)
+      placeholder: "Enquete para definir as prioridades estratégicas dos Grupos de Trabalho no ciclo 2026..."
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Cole aqui o link do Google Docs, Google Forms, Drive, PDF ou qualquer URL externa
+      placeholder: "https://docs.google.com/forms/..."
+    validations:
+      required: true
+
+  - type: input
+    id: link_texto
+    attributes:
+      label: Texto do botão
+      description: O que aparece escrito no botão que abre o link
+      placeholder: "Responder enquete"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        > **Como publicar:** após preencher e enviar este formulário, adicione a label **`publicar`** para que o conteúdo apareça no site automaticamente.
