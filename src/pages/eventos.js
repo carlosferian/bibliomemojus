@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -81,11 +81,9 @@ const EventosPage = () => {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {EVENTS.map((ev, i) => (
-              <a
+              <Link
                 key={i}
-                href={ev.url}
-                target="_blank"
-                rel="noreferrer"
+                to={ev.url}
                 className={`event-detail reveal d${(i % 3) + 1}`}
                 style={{ textDecoration: "none" }}
               >
@@ -103,7 +101,7 @@ const EventosPage = () => {
                     →
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -137,14 +135,12 @@ const EventosPage = () => {
                 </p>
               </div>
               <div style={{ marginTop: "28px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                <a
-                  href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/eventos-realizados/enabijud/como-sediar-o-enabijud"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/eventos/como-sediar"
                   className="btn btn-primary"
                 >
                   Guia: Como Sediar →
-                </a>
+                </Link>
                 <a
                   href="mailto:bibliomemojus@gmail.com"
                   className="btn btn-outline"

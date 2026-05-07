@@ -6,7 +6,6 @@ export const GTS = [
     shortDesc: "Estratégias e práticas de gestão para bibliotecas do Poder Judiciário.",
     longDesc: "O GT de Gestão desenvolve diretrizes, indicadores e melhores práticas voltadas à administração eficiente das bibliotecas judiciárias. Atua no mapeamento de processos, elaboração de instrumentos normativos e promoção de modelos de gestão adaptados à realidade do Judiciário brasileiro.",
     chips: ["Apresentação", "Plano de Ação", "Calendário", "Vídeos"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt1-gest%C3%A3o",
     activities: [
       "Levantamento e análise de modelos de gestão em bibliotecas judiciárias",
       "Elaboração de indicadores de desempenho específicos para o setor",
@@ -28,7 +27,6 @@ export const GTS = [
     shortDesc: "Preservação e difusão da memória institucional do Poder Judiciário.",
     longDesc: "O GT de Memória trabalha pela identificação, preservação, organização e difusão da memória do Poder Judiciário Brasileiro. Desenvolve projetos que resgatam a história das instituições judiciárias e promovem o acesso ao patrimônio documental e bibliográfico de valor histórico.",
     chips: ["Apresentação", "Plano de Ação", "Calendário"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt2-mem%C3%B3ria",
     activities: [
       "Mapeamento de acervos históricos nas bibliotecas judiciárias",
       "Desenvolvimento de políticas de preservação documental",
@@ -49,7 +47,6 @@ export const GTS = [
     shortDesc: "Fomento à cooperação em rede entre as bibliotecas judiciárias nacionais.",
     longDesc: "O GT de Redes atua no fortalecimento da cooperação interinstitucional entre as bibliotecas do Poder Judiciário. Desenvolve instrumentos de integração, estuda modelos de redes bibliotecárias nacionais e internacionais, e propõe ações conjuntas que ampliem o alcance e o impacto da Bibliomemojus.",
     chips: ["Apresentação", "Plano de Ação", "Núcleo de Estudos"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt3-redes",
     activities: [
       "Estudo de modelos de redes cooperativas de bibliotecas",
       "Desenvolvimento de instrumentos de integração e compartilhamento de acervos",
@@ -70,7 +67,6 @@ export const GTS = [
     shortDesc: "Acervos digitais e acesso aberto à informação jurídica.",
     longDesc: "O GT de Biblioteca Digital desenvolve iniciativas voltadas à criação, gestão e ampliação de acervos digitais nas bibliotecas judiciárias. Promove o acesso aberto à produção jurídica, estuda plataformas e tecnologias para bibliotecas digitais, e articula ações de digitalização de acervos.",
     chips: ["Apresentação", "Plano de Ação", "Calendário"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt4-biblioteca-digital",
     activities: [
       "Mapeamento de plataformas e sistemas de biblioteca digital",
       "Promoção do acesso aberto à produção jurídica",
@@ -91,7 +87,6 @@ export const GTS = [
     shortDesc: "Tecnologias emergentes e cultura de inovação nas bibliotecas judiciárias.",
     longDesc: "O GT de Inovação promove a incorporação de tecnologias emergentes e a consolidação de uma cultura de inovação nas bibliotecas judiciárias. Explora o uso de inteligência artificial, automação de processos, experiências do usuário e novos modelos de serviços bibliotecários.",
     chips: ["Apresentação", "Núcleo de Estudos", "Oficinas"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt5-inova%C3%A7%C3%A3o",
     activities: [
       "Mapeamento de tecnologias emergentes aplicadas a bibliotecas",
       "Estudos sobre uso de inteligência artificial em serviços bibliotecários",
@@ -112,7 +107,6 @@ export const GTS = [
     shortDesc: "Alinhamento das ações da rede aos ODS da ONU.",
     longDesc: "O GT Agenda 2030 promove o alinhamento das ações das bibliotecas judiciárias aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU. Desenvolve iniciativas que contribuem para o acesso à justiça, redução das desigualdades, educação de qualidade e outras metas da Agenda 2030.",
     chips: ["Apresentação", "Plano de Ação", "Núcleo de Estudos"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt6-agenda-2030",
     activities: [
       "Mapeamento das contribuições das bibliotecas judiciárias aos ODS",
       "Promoção do ODS 16 — Paz, Justiça e Instituições Eficazes",
@@ -133,7 +127,6 @@ export const GTS = [
     shortDesc: "Formação continuada e desenvolvimento profissional dos bibliotecários judiciários.",
     longDesc: "O GT de Capacitação desenvolve ações de formação continuada voltadas aos profissionais das bibliotecas judiciárias. Organiza eventos, cursos, webinars e materiais educativos que ampliam as competências técnicas e promovem o desenvolvimento profissional na área.",
     chips: ["Apresentação", "Plano de Ação", "Vídeos"],
-    externalUrl: "https://sites.google.com/view/bibliomemojus/in%C3%ADcio/grupos-de-trabalho/gt7-capacita%C3%A7%C3%A3o",
     activities: [
       "Mapeamento de necessidades de capacitação dos profissionais da rede",
       "Organização de webinars e cursos online para bibliotecários",

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -100,14 +100,12 @@ const ProjetosPage = () => {
                 >
                   Abrir Painel Power BI →
                 </a>
-                <a
-                  href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/publica%C3%A7%C3%B5es"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/projetos"
                   className="btn btn-outline"
                 >
                   Ver Publicações
-                </a>
+                </Link>
               </div>
             </div>
             <div className="diag-panel reveal d2">
@@ -143,23 +141,30 @@ const ProjetosPage = () => {
             desenvolvidos pela Bibliomemojus.
           </p>
           <div className="projects-grid">
-            {PROJECTS.map((proj, i) => (
-              <a
-                key={i}
-                href={proj.link}
-                target="_blank"
-                rel="noreferrer"
-                className={`project-card reveal d${(i % 3) + 1}`}
-              >
-                <span className="project-card-icon">{proj.icone}</span>
-                <p className="news-date">{proj.tag}</p>
-                <p className="project-card-title">{proj.titulo}</p>
-                <p className="project-card-desc">{proj.descricao}</p>
-                <span className="project-card-link">
-                  {proj.link_texto} →
-                </span>
-              </a>
-            ))}
+            {PROJECTS.map((proj, i) => {
+              const isInternal = proj.link && proj.link.startsWith("/")
+              const cardClass = `project-card reveal d${(i % 3) + 1}`
+              const inner = (
+                <>
+                  <span className="project-card-icon">{proj.icone}</span>
+                  <p className="news-date">{proj.tag}</p>
+                  <p className="project-card-title">{proj.titulo}</p>
+                  <p className="project-card-desc">{proj.descricao}</p>
+                  <span className="project-card-link">
+                    {proj.link_texto} →
+                  </span>
+                </>
+              )
+              return isInternal ? (
+                <Link key={i} to={proj.link} className={cardClass}>
+                  {inner}
+                </Link>
+              ) : (
+                <a key={i} href={proj.link} target="_blank" rel="noreferrer" className={cardClass}>
+                  {inner}
+                </a>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -171,14 +176,12 @@ const ProjetosPage = () => {
             Responda às enquetes e ajude a definir as prioridades da
             Bibliomemojus.
           </p>
-          <a
-            href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/enquetes"
             className="btn btn-primary"
           >
             Acessar Enquetes →
-          </a>
+          </Link>
         </div>
       </div>
 

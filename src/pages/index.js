@@ -364,11 +364,9 @@ const IndexPage = () => {
                 calendários e materiais.
               </p>
             </Link>
-            <a
+            <Link
               className="news-card reveal d3"
-              href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes"
-              target="_blank"
-              rel="noreferrer"
+              to="/enquetes"
             >
               <p className="news-date">Enquetes</p>
               <p className="news-title">Responda às enquetes</p>
@@ -376,7 +374,7 @@ const IndexPage = () => {
                 Sua opinião orienta as ações da rede. Participe das enquetes
                 abertas da Bibliomemojus.
               </p>
-            </a>
+            </Link>
           </div>
           <div className="see-all-wrap">
             <Link to="/noticias" className="btn btn-outline">
@@ -394,14 +392,12 @@ const IndexPage = () => {
             Responda às enquetes e contribua com as decisões estratégicas da
             Bibliomemojus.
           </p>
-          <a
-            href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/enquetes"
             className="btn btn-primary"
           >
             Acessar Enquetes →
-          </a>
+          </Link>
         </div>
       </div>
 

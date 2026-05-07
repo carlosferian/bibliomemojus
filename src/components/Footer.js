@@ -19,10 +19,10 @@ const Footer = () => (
         <div className="footer-col">
           <h4>Sobre</h4>
           <ul>
-            <li><a href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/sobre/quem-somos" target="_blank" rel="noreferrer">Quem Somos</a></li>
+            <li><Link to="/sobre">Quem Somos</Link></li>
             <li><Link to="/projetos">Publicações</Link></li>
             <li><a href="mailto:bibliomemojus@gmail.com">Fale Conosco</a></li>
-            <li><a href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes" target="_blank" rel="noreferrer">Enquetes</a></li>
+            <li><Link to="/enquetes">Enquetes</Link></li>
           </ul>
         </div>
         <div className="footer-col">

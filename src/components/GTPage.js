@@ -56,14 +56,6 @@ const GTPage = ({ gt, prev, next }) => {
                 fortalecem as bibliotecas judiciárias em todo o Brasil.
               </p>
               <div style={{ marginTop: "28px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                <a
-                  href={gt.externalUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-primary"
-                >
-                  Ver no Google Sites →
-                </a>
                 <Link to="/#grupos" className="btn btn-outline">
                   ← Todos os GTs
                 </Link>
@@ -93,17 +85,14 @@ const GTPage = ({ gt, prev, next }) => {
             </h3>
             <div className="resource-grid">
               {gt.resources.map((res, i) => (
-                <a
+                <div
                   key={i}
-                  href={gt.externalUrl}
-                  target="_blank"
-                  rel="noreferrer"
                   className={`resource-card reveal d${(i % 4) + 1}`}
                 >
                   <span className="resource-card-icon">{res.icon}</span>
                   <p className="resource-card-title">{res.title}</p>
                   <p className="resource-card-desc">{res.desc}</p>
-                </a>
+                </div>
               ))}
             </div>
           </div>

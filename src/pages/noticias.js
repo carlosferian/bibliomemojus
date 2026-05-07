@@ -245,14 +245,12 @@ const NoticiasPage = () => {
             Responda às enquetes e contribua com as decisões estratégicas da
             Bibliomemojus.
           </p>
-          <a
-            href="https://sites.google.com/view/bibliomemojus/in%C3%ADcio/enquetes"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/enquetes"
             className="btn btn-primary"
           >
             Acessar Enquetes →
-          </a>
+          </Link>
         </div>
       </div>
 
