@@ -189,7 +189,7 @@ const IndexPage = () => {
               <div>
                 <p className="tag-label destaques-tag">Destaques</p>
                 <h2 className="section-title destaques-title">
-                  Últimas notícias da rede
+                  Últimas notícias
                 </h2>
               </div>
               <Link to="/noticias" className="btn btn-ghost destaques-ver-todas">
