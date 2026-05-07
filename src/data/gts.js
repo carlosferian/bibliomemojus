@@ -5,7 +5,7 @@ export const GTS = [
     name: "Gestão",
     shortDesc: "Estratégias e práticas de gestão para bibliotecas do Poder Judiciário.",
     longDesc: "O GT de Gestão desenvolve diretrizes, indicadores e melhores práticas voltadas à administração eficiente das bibliotecas judiciárias. Atua no mapeamento de processos, elaboração de instrumentos normativos e promoção de modelos de gestão adaptados à realidade do Judiciário brasileiro.",
-    chips: ["Apresentação", "Plano de Ação", "Calendário", "Vídeos"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Levantamento e análise de modelos de gestão em bibliotecas judiciárias",
       "Elaboração de indicadores de desempenho específicos para o setor",
@@ -14,11 +14,12 @@ export const GTS = [
       "Discussão sobre estruturas organizacionais e perfil profissional",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos" },
-      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 2,
@@ -26,7 +27,7 @@ export const GTS = [
     name: "Memória",
     shortDesc: "Preservação e difusão da memória institucional do Poder Judiciário.",
     longDesc: "O GT de Memória trabalha pela identificação, preservação, organização e difusão da memória do Poder Judiciário Brasileiro. Desenvolve projetos que resgatam a história das instituições judiciárias e promovem o acesso ao patrimônio documental e bibliográfico de valor histórico.",
-    chips: ["Apresentação", "Plano de Ação", "Calendário"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Mapeamento de acervos históricos nas bibliotecas judiciárias",
       "Desenvolvimento de políticas de preservação documental",
@@ -35,10 +36,12 @@ export const GTS = [
       "Promoção da história e trajetória do Poder Judiciário",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 3,
@@ -46,7 +49,7 @@ export const GTS = [
     name: "Redes",
     shortDesc: "Fomento à cooperação em rede entre as bibliotecas judiciárias nacionais.",
     longDesc: "O GT de Redes atua no fortalecimento da cooperação interinstitucional entre as bibliotecas do Poder Judiciário. Desenvolve instrumentos de integração, estuda modelos de redes bibliotecárias nacionais e internacionais, e propõe ações conjuntas que ampliem o alcance e o impacto da Bibliomemojus.",
-    chips: ["Apresentação", "Plano de Ação", "Núcleo de Estudos"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Estudo de modelos de redes cooperativas de bibliotecas",
       "Desenvolvimento de instrumentos de integração e compartilhamento de acervos",
@@ -55,10 +58,12 @@ export const GTS = [
       "Núcleo de estudos sobre cooperação interinstitucional",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "🔬", title: "Núcleo de Estudos", desc: "Pesquisas e publicações" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 4,
@@ -66,7 +71,7 @@ export const GTS = [
     name: "Biblioteca Digital",
     shortDesc: "Acervos digitais e acesso aberto à informação jurídica.",
     longDesc: "O GT de Biblioteca Digital desenvolve iniciativas voltadas à criação, gestão e ampliação de acervos digitais nas bibliotecas judiciárias. Promove o acesso aberto à produção jurídica, estuda plataformas e tecnologias para bibliotecas digitais, e articula ações de digitalização de acervos.",
-    chips: ["Apresentação", "Plano de Ação", "Calendário"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Mapeamento de plataformas e sistemas de biblioteca digital",
       "Promoção do acesso aberto à produção jurídica",
@@ -75,10 +80,12 @@ export const GTS = [
       "Articulação com repositórios institucionais e portais jurídicos",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 5,
@@ -86,7 +93,7 @@ export const GTS = [
     name: "Inovação",
     shortDesc: "Tecnologias emergentes e cultura de inovação nas bibliotecas judiciárias.",
     longDesc: "O GT de Inovação promove a incorporação de tecnologias emergentes e a consolidação de uma cultura de inovação nas bibliotecas judiciárias. Explora o uso de inteligência artificial, automação de processos, experiências do usuário e novos modelos de serviços bibliotecários.",
-    chips: ["Apresentação", "Núcleo de Estudos", "Oficinas"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Mapeamento de tecnologias emergentes aplicadas a bibliotecas",
       "Estudos sobre uso de inteligência artificial em serviços bibliotecários",
@@ -95,10 +102,12 @@ export const GTS = [
       "Promoção de projetos-piloto de serviços inovadores",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🔬", title: "Núcleo de Estudos", desc: "Pesquisas e publicações" },
-      { icon: "🛠️", title: "Oficinas", desc: "Workshops práticos" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 6,
@@ -106,7 +115,7 @@ export const GTS = [
     name: "Agenda 2030",
     shortDesc: "Alinhamento das ações da rede aos ODS da ONU.",
     longDesc: "O GT Agenda 2030 promove o alinhamento das ações das bibliotecas judiciárias aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU. Desenvolve iniciativas que contribuem para o acesso à justiça, redução das desigualdades, educação de qualidade e outras metas da Agenda 2030.",
-    chips: ["Apresentação", "Plano de Ação", "Núcleo de Estudos"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Mapeamento das contribuições das bibliotecas judiciárias aos ODS",
       "Promoção do ODS 16 — Paz, Justiça e Instituições Eficazes",
@@ -115,10 +124,12 @@ export const GTS = [
       "Núcleo de estudos sobre bibliotecas e desenvolvimento sustentável",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "🔬", title: "Núcleo de Estudos", desc: "Pesquisas e publicações" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
   {
     num: 7,
@@ -126,7 +137,7 @@ export const GTS = [
     name: "Capacitação",
     shortDesc: "Formação continuada e desenvolvimento profissional dos bibliotecários judiciários.",
     longDesc: "O GT de Capacitação desenvolve ações de formação continuada voltadas aos profissionais das bibliotecas judiciárias. Organiza eventos, cursos, webinars e materiais educativos que ampliam as competências técnicas e promovem o desenvolvimento profissional na área.",
-    chips: ["Apresentação", "Plano de Ação", "Vídeos"],
+    chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Mapeamento de necessidades de capacitação dos profissionais da rede",
       "Organização de webinars e cursos online para bibliotecários",
@@ -135,9 +146,11 @@ export const GTS = [
       "Promoção de trilhas de aprendizagem para a área de biblioteconomia jurídica",
     ],
     resources: [
-      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT" },
-      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma" },
-      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações" },
+      { icon: "📋", title: "Apresentação", desc: "Objetivos e escopo do GT", link: null },
+      { icon: "🗺️", title: "Plano de Ação", desc: "Metas e cronograma", link: null },
+      { icon: "🎥", title: "Vídeos", desc: "Webinars e gravações", link: null },
+      { icon: "📅", title: "Calendário", desc: "Reuniões e eventos", link: null },
     ],
+    calendarEmbedUrl: null,
   },
 ]

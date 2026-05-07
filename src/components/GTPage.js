@@ -3,6 +3,26 @@ import { Link } from "gatsby"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
+const ResourceCard = ({ res, index }) => {
+  const cls = `resource-card reveal d${(index % 4) + 1}${res.link ? " is-available" : " is-soon"}`
+  const inner = (
+    <>
+      <span className="resource-card-icon" aria-hidden="true">{res.icon}</span>
+      <p className="resource-card-title">{res.title}</p>
+      <p className="resource-card-desc">{res.desc}</p>
+      {res.link
+        ? <span className="resource-card-cta">Acessar →</span>
+        : <span className="resource-card-soon">Em breve</span>
+      }
+    </>
+  )
+  if (res.link && res.link.startsWith("/"))
+    return <Link to={res.link} className={cls}>{inner}</Link>
+  if (res.link)
+    return <a href={res.link} target="_blank" rel="noreferrer" className={cls}>{inner}</a>
+  return <div className={cls}>{inner}</div>
+}
+
 const GTPage = ({ gt, prev, next }) => {
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -43,6 +63,7 @@ const GTPage = ({ gt, prev, next }) => {
         </div>
       </section>
 
+      {/* Descrição + Atividades */}
       <section className="section about">
         <div className="section-inner">
           <div className="about-grid">
@@ -74,32 +95,70 @@ const GTPage = ({ gt, prev, next }) => {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div style={{ marginTop: "64px" }}>
-            <p className="tag-label reveal">Recursos</p>
-            <h3
-              className="section-title reveal d1"
-              style={{ fontSize: "clamp(20px,2.5vw,32px)" }}
-            >
-              Materiais produzidos pelo GT
-            </h3>
-            <div className="resource-grid">
-              {gt.resources.map((res, i) => (
-                <div
-                  key={i}
-                  className={`resource-card reveal d${(i % 4) + 1}`}
-                >
-                  <span className="resource-card-icon" aria-hidden="true">{res.icon}</span>
-                  <p className="resource-card-title">{res.title}</p>
-                  <p className="resource-card-desc">{res.desc}</p>
-                </div>
-              ))}
-            </div>
+      {/* Recursos */}
+      <section className="section" style={{ background: "var(--cream)", paddingTop: "48px", paddingBottom: "48px" }}>
+        <div className="section-inner">
+          <p className="tag-label reveal">Recursos</p>
+          <h3
+            className="section-title reveal d1"
+            style={{ fontSize: "clamp(20px,2.5vw,32px)" }}
+          >
+            Materiais produzidos pelo GT
+          </h3>
+          <div className="resource-grid">
+            {gt.resources.map((res, i) => (
+              <ResourceCard key={i} res={res} index={i} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Nav between GTs */}
+      {/* Calendário */}
+      <section className="section" style={{ background: "var(--white)", paddingTop: "48px", paddingBottom: "64px" }}>
+        <div className="section-inner">
+          <p className="tag-label reveal">Calendário</p>
+          <h3
+            className="section-title reveal d1"
+            style={{ fontSize: "clamp(20px,2.5vw,32px)" }}
+          >
+            Agenda do GT {gt.num}
+          </h3>
+
+          {gt.calendarEmbedUrl ? (
+            <div className="gt-calendar-wrap reveal d2">
+              <iframe
+                src={gt.calendarEmbedUrl}
+                title={`Calendário do GT ${gt.num} — ${gt.name}`}
+                className="gt-calendar-iframe"
+                style={{ border: "none" }}
+                scrolling="no"
+                aria-label={`Calendário do GT ${gt.num}`}
+              />
+            </div>
+          ) : (
+            <div className="gt-calendar-placeholder reveal d2">
+              <span className="gt-calendar-ph-icon" aria-hidden="true">📅</span>
+              <p className="gt-calendar-ph-title">Calendário em configuração</p>
+              <p className="gt-calendar-ph-sub">
+                A agenda do GT {gt.num} será disponibilizada em breve.
+                Entre em contato para obter informações sobre os próximos encontros.
+              </p>
+              <a
+                href="mailto:bibliomemojus@gmail.com"
+                className="btn btn-outline"
+                style={{ marginTop: "20px", display: "inline-flex" }}
+              >
+                Solicitar informações
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Nav entre GTs */}
       <div
         style={{
           background: "var(--cream)",
