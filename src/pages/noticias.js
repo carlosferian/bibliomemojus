@@ -22,15 +22,6 @@ const SELECT_STYLE = active => ({
   backgroundPosition: "right 8px center",
 })
 
-const LABEL_STYLE = {
-  fontSize: "11px",
-  fontWeight: 600,
-  textTransform: "uppercase",
-  letterSpacing: ".08em",
-  color: "var(--muted)",
-  whiteSpace: "nowrap",
-}
-
 const NoticiasPage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -136,11 +127,11 @@ const NoticiasPage = () => {
           </p>
 
           {/* ── Barra de filtros ── */}
-          <div className="reveal d3" style={{ marginBottom: "32px" }}>
+          <div className="filter-bar reveal d3">
 
             {/* Pills de tag */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", alignItems: "center", marginBottom: "12px" }}>
-              <span style={LABEL_STYLE}>Assunto</span>
+            <div className="filter-pills">
+              <span className="filter-label">Assunto</span>
               {tags.map(tag => (
                 <button
                   key={tag}
@@ -166,9 +157,9 @@ const NoticiasPage = () => {
             </div>
 
             {/* Selects de ano e fonte */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={LABEL_STYLE}>Ano</span>
+            <div className="filter-selects">
+              <div className="filter-select-group">
+                <span className="filter-label">Ano</span>
                 <select value={filterAno} onChange={e => setFilterAno(e.target.value)} style={SELECT_STYLE(filterAno !== "Todos")}>
                   {anos.map(a => (
                     <option key={a} value={a}>{a === "Todos" ? "Todos os anos" : a}</option>
@@ -177,8 +168,8 @@ const NoticiasPage = () => {
               </div>
 
               {fontes.length > 1 && (
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={LABEL_STYLE}>Fonte</span>
+                <div className="filter-select-group">
+                  <span className="filter-label">Fonte</span>
                   <select value={filterFonte} onChange={e => setFilterFonte(e.target.value)} style={SELECT_STYLE(filterFonte !== "Todas")}>
                     {fontes.map(f => (
                       <option key={f} value={f}>{f === "Todas" ? "Todas as fontes" : f}</option>
@@ -201,7 +192,7 @@ const NoticiasPage = () => {
                 </button>
               )}
 
-              <span style={{ fontSize: "12px", color: "var(--muted)", marginLeft: "auto" }}>
+              <span className="filter-count">
                 {filtered.length} resultado{filtered.length !== 1 ? "s" : ""}
               </span>
             </div>
