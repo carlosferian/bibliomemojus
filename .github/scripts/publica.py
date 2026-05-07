@@ -50,6 +50,7 @@ def _parse_form(body):
         "tag":          raw.get("Categoria", ""),
         "resumo":       raw.get("Resumo", ""),
         "link_externo": raw.get("Link externo (opcional)", ""),
+        "fonte":        raw.get("Fonte", ""),
     }
 
 
@@ -61,6 +62,7 @@ def _parse_bold(body):
         "tag":          r"\*\*Tag:\*\*\s*(.+)",
         "resumo":       r"\*\*Resumo:\*\*\s*(.+)",
         "link_externo": r"\*\*Link:\*\*\s*(https?://\S+)",
+        "fonte":        r"\*\*Fonte:\*\*\s*(.+)",
     }
     fields = {}
     for key, pattern in patterns.items():
@@ -86,11 +88,12 @@ def create_markdown(fields):
         filepath = Path("content/noticias") / f"{now.strftime('%Y-%m')}-{slug}-{counter}.md"
         counter += 1
 
-    # Escapa aspas no resumo para não quebrar o YAML
+    # Escapa aspas para não quebrar o YAML
     titulo  = fields["titulo"].replace('"', '\\"')
     resumo  = fields["resumo"].replace('"', '\\"')
     tag     = fields["tag"].replace('"', '\\"')
     data    = fields["data"].replace('"', '\\"')
+    fonte   = fields.get("fonte", "").replace('"', '\\"')
 
     content = f"""\
 ---
@@ -100,6 +103,7 @@ tag: "{tag}"
 resumo: "{resumo}"
 link_interno: ""
 link_externo: "{fields['link_externo']}"
+fonte: "{fonte}"
 ordem: {next_ordem()}
 ---
 """

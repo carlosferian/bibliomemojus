@@ -5,5 +5,6 @@ tag: "Aviso"
 resumo: "O site da Bibliomemojus foi reformulado para facilitar o acesso aos conteúdos dos Grupos de Trabalho, eventos, notícias e publicações da rede nacional."
 link_interno: ""
 link_externo: ""
+fonte: ""
 ordem: 5
 ---

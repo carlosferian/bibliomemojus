@@ -49,6 +49,13 @@ body:
       description: Se a notícia tiver um link de referência (Google Docs, site, etc.), cole aqui. Deixe em branco se não houver.
       placeholder: "https://docs.google.com/..."
 
+  - type: input
+    id: fonte
+    attributes:
+      label: Fonte
+      description: Nome da fonte ou instituição (ex. Bibliomemojus, TJRR, CNJ). Deixe em branco para notícias da própria rede.
+      placeholder: "Bibliomemojus"
+
   - type: markdown
     attributes:
       value: |

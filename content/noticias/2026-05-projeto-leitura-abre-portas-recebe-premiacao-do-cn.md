@@ -5,5 +5,6 @@ tag: "Biblioteca Judiciária"
 resumo: "Projeto “Leitura Abre Portas” recebe premiação do CNJ&nbsp;&nbsp;TJRR"
 link_interno: ""
 link_externo: "https://www.tjrr.jus.br/index.php/noticias/20408-projeto-leitura-abre-portas-recebe-premiacao-do-cnj"
+fonte: "TJRR"
 ordem: 7
 ---
