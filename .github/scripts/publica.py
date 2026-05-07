@@ -3,6 +3,7 @@ Lê o corpo de uma GitHub Issue e cria o arquivo Markdown em content/noticias/.
 Chamado pelo workflow publica-noticia.yml quando a label 'publicar' é adicionada.
 """
 
+import html as html_module
 import os
 import re
 import unicodedata
@@ -43,7 +44,7 @@ def _parse_form(body):
     parts = re.split(r'^###\s+(.+)$', body, flags=re.MULTILINE)
     it = iter(parts[1:])
     for heading in it:
-        raw[heading.strip()] = next(it, '').strip()
+        raw[heading.strip()] = html_module.unescape(next(it, '').strip())
     return {
         "titulo":       raw.get("Título", ""),
         "data":         raw.get("Data", ""),
@@ -67,7 +68,8 @@ def _parse_bold(body):
     fields = {}
     for key, pattern in patterns.items():
         match = re.search(pattern, body, re.MULTILINE)
-        fields[key] = match.group(1).strip() if match else ""
+        raw = match.group(1).strip() if match else ""
+        fields[key] = html_module.unescape(raw)
     return fields
 
 
