@@ -78,6 +78,11 @@ def next_ordem():
     return len(files) + 1
 
 
+def _yaml_sq(value):
+    """Envolve value em aspas simples YAML; aspa simples interna vira ''."""
+    return "'" + value.replace("'", "''") + "'"
+
+
 def create_markdown(fields):
     now = datetime.now()
     slug = slugify(fields["titulo"])
@@ -90,22 +95,15 @@ def create_markdown(fields):
         filepath = Path("content/noticias") / f"{now.strftime('%Y-%m')}-{slug}-{counter}.md"
         counter += 1
 
-    # Escapa aspas para não quebrar o YAML
-    titulo  = fields["titulo"].replace('"', '\\"')
-    resumo  = fields["resumo"].replace('"', '\\"')
-    tag     = fields["tag"].replace('"', '\\"')
-    data    = fields["data"].replace('"', '\\"')
-    fonte   = fields.get("fonte", "").replace('"', '\\"')
-
     content = f"""\
 ---
-titulo: "{titulo}"
-data: "{data}"
-tag: "{tag}"
-resumo: "{resumo}"
+titulo: {_yaml_sq(fields['titulo'])}
+data: {_yaml_sq(fields['data'])}
+tag: {_yaml_sq(fields['tag'])}
+resumo: {_yaml_sq(fields['resumo'])}
 link_interno: ""
-link_externo: "{fields['link_externo']}"
-fonte: "{fonte}"
+link_externo: {_yaml_sq(fields['link_externo'])}
+fonte: {_yaml_sq(fields.get('fonte', ''))}
 ordem: {next_ordem()}
 ---
 """
