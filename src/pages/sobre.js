@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const SobrePage = () => {
   useEffect(() => {
@@ -227,11 +228,9 @@ const SobrePage = () => {
 export default SobrePage
 
 export const Head = () => (
-  <>
-    <title>Quem Somos | BIBLIOMEMOJUS</title>
-    <meta
-      name="description"
-      content="Conheça a Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias, criada em 2022 para conectar profissionais dos cinco ramos do Poder Judiciário."
-    />
-  </>
+  <SeoHead
+    title="Quem Somos | BIBLIOMEMOJUS"
+    description="Conheça a Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias, criada em 2022 para conectar profissionais dos cinco ramos do Poder Judiciário."
+    path="/sobre"
+  />
 )

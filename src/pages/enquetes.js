@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const EnquetesPage = () => {
   useEffect(() => {
@@ -183,11 +184,9 @@ const EnquetesPage = () => {
 export default EnquetesPage
 
 export const Head = () => (
-  <>
-    <title>Enquetes | BIBLIOMEMOJUS</title>
-    <meta
-      name="description"
-      content="Participe das enquetes da Bibliomemojus e contribua com as decisões estratégicas da Rede Nacional de Bibliotecas Judiciárias."
-    />
-  </>
+  <SeoHead
+    title="Enquetes | BIBLIOMEMOJUS"
+    description="Participe das enquetes da Bibliomemojus e contribua com as decisões estratégicas da Rede Nacional de Bibliotecas Judiciárias."
+    path="/enquetes"
+  />
 )

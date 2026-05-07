@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const NotFoundPage = () => (
   <>
@@ -35,8 +36,9 @@ const NotFoundPage = () => (
 export default NotFoundPage
 
 export const Head = () => (
-  <>
-    <title>Página não encontrada | BIBLIOMEMOJUS</title>
-    <meta name="description" content="A página que você procura não existe. Volte à home da Bibliomemojus." />
-  </>
+  <SeoHead
+    title="Página não encontrada | BIBLIOMEMOJUS"
+    description="A página que você procura não existe. Volte à home da Bibliomemojus."
+    path="/404"
+  />
 )

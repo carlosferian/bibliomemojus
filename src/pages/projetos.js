@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const ProjetosPage = () => {
   const data = useStaticQuery(graphql`
@@ -146,7 +147,7 @@ const ProjetosPage = () => {
               const cardClass = `project-card reveal d${(i % 3) + 1}`
               const inner = (
                 <>
-                  <span className="project-card-icon">{proj.icone}</span>
+                  <span className="project-card-icon" aria-hidden="true">{proj.icone}</span>
                   <p className="news-date">{proj.tag}</p>
                   <p className="project-card-title">{proj.titulo}</p>
                   <p className="project-card-desc">{proj.descricao}</p>
@@ -193,8 +194,9 @@ const ProjetosPage = () => {
 export default ProjetosPage
 
 export const Head = () => (
-  <>
-    <title>Publicações &amp; Projetos | BIBLIOMEMOJUS</title>
-    <meta name="description" content="Publicações, diagnóstico e projetos da Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias." />
-  </>
+  <SeoHead
+    title="Publicações &amp; Projetos | BIBLIOMEMOJUS"
+    description="Publicações, diagnóstico e projetos da Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias."
+    path="/projetos"
+  />
 )

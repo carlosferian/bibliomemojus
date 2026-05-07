@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const SELECT_STYLE = active => ({
   fontSize: "12px",
@@ -96,7 +97,7 @@ const NoticiasPage = () => {
       }),
       { threshold: 0.1 }
     )
-    document.querySelectorAll(".reveal").forEach(el => obs.observe(el))
+    document.querySelectorAll(".reveal:not(.visible)").forEach(el => obs.observe(el))
     return () => obs.disconnect()
   }, [filtered])
 
@@ -262,11 +263,9 @@ const NoticiasPage = () => {
 export default NoticiasPage
 
 export const Head = () => (
-  <>
-    <title>Notícias | BIBLIOMEMOJUS</title>
-    <meta
-      name="description"
-      content="Notícias da Bibliomemojus e curadoria de notícias sobre biblioteconomia jurídica, gestão documental e ciência da informação no Poder Judiciário."
-    />
-  </>
+  <SeoHead
+    title="Notícias | BIBLIOMEMOJUS"
+    description="Notícias da Bibliomemojus e curadoria sobre biblioteconomia jurídica, gestão documental e ciência da informação no Poder Judiciário."
+    path="/noticias"
+  />
 )

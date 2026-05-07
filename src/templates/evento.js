@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import sanitizeHtml from "sanitize-html"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const EventoTemplate = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
@@ -68,12 +69,13 @@ const EventoTemplate = ({ data }) => {
 export default EventoTemplate
 
 export const Head = ({ data }) => {
-  const { titulo, descricao } = data.markdownRemark.frontmatter
+  const { titulo, descricao, url } = data.markdownRemark.frontmatter
   return (
-    <>
-      <title>{titulo} | BIBLIOMEMOJUS</title>
-      <meta name="description" content={descricao} />
-    </>
+    <SeoHead
+      title={`${titulo} | BIBLIOMEMOJUS`}
+      description={descricao}
+      path={url || "/eventos"}
+    />
   )
 }
 
@@ -85,6 +87,7 @@ export const query = graphql`
         tag
         titulo
         descricao
+        url
       }
     }
   }

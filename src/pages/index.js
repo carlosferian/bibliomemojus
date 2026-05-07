@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 import { GTS } from "../data/gts"
 
 const IndexPage = () => {
@@ -419,8 +420,9 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => (
-  <>
-    <title>BIBLIOMEMOJUS — Rede Nacional de Bibliotecas Judiciárias</title>
-    <meta name="description" content="A Bibliomemojus conecta profissionais de bibliotecas dos cinco ramos do Poder Judiciário para fomentar cooperação, inovação e o acesso à informação jurídica em todo o Brasil." />
-  </>
+  <SeoHead
+    title="BIBLIOMEMOJUS — Rede Nacional de Bibliotecas Judiciárias"
+    description="A Bibliomemojus conecta profissionais de bibliotecas dos cinco ramos do Poder Judiciário para fomentar cooperação, inovação e o acesso à informação jurídica em todo o Brasil."
+    path="/"
+  />
 )

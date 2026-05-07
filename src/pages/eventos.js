@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import SeoHead from "../components/SeoHead"
 
 const EventosPage = () => {
   const data = useStaticQuery(graphql`
@@ -180,8 +181,9 @@ const EventosPage = () => {
 export default EventosPage
 
 export const Head = () => (
-  <>
-    <title>Eventos | BIBLIOMEMOJUS</title>
-    <meta name="description" content="Encontros nacionais organizados pela Bibliomemojus: ENABIJUD e ENAM." />
-  </>
+  <SeoHead
+    title="Eventos | BIBLIOMEMOJUS"
+    description="Encontros nacionais organizados pela Bibliomemojus: ENABIJUD e ENAM — fortalecendo a rede de bibliotecas judiciárias brasileiras."
+    path="/eventos"
+  />
 )

@@ -89,7 +89,7 @@ const GTPage = ({ gt, prev, next }) => {
                   key={i}
                   className={`resource-card reveal d${(i % 4) + 1}`}
                 >
-                  <span className="resource-card-icon">{res.icon}</span>
+                  <span className="resource-card-icon" aria-hidden="true">{res.icon}</span>
                   <p className="resource-card-title">{res.title}</p>
                   <p className="resource-card-desc">{res.desc}</p>
                 </div>
