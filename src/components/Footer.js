@@ -40,11 +40,11 @@ const Footer = () => (
         <div className="footer-col">
           <h4>Eventos</h4>
           <ul>
-            <li><Link to="/eventos">1º ENABIJUD</Link></li>
-            <li><Link to="/eventos">2º ENABIJUD</Link></li>
-            <li><Link to="/eventos">3º ENABIJUD</Link></li>
-            <li><Link to="/eventos">ENAM</Link></li>
-            <li><Link to="/eventos">Como sediar o ENABIJUD</Link></li>
+            <li><Link to="/eventos/enabijud-1">1º ENABIJUD</Link></li>
+            <li><Link to="/eventos/enabijud-2">2º ENABIJUD</Link></li>
+            <li><Link to="/eventos/enabijud-3">3º ENABIJUD</Link></li>
+            <li><Link to="/eventos/enam">ENAM</Link></li>
+            <li><Link to="/eventos/como-sediar">Como sediar o ENABIJUD</Link></li>
           </ul>
         </div>
       </div>

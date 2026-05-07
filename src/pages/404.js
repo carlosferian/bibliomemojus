@@ -1,30 +1,42 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import React from "react"
+import { Link } from "gatsby"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const NotFoundPage = () => (
+  <>
+    <Navbar />
 
-const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+    <section className="page-hero">
+      <div className="orb orb-1" style={{ opacity: 0.5 }} />
+      <div className="page-hero-inner" style={{ textAlign: "center" }}>
+        <span className="gt-num-badge">404</span>
+        <h1>
+          Página não
+          <br />
+          <strong>encontrada</strong>
+        </h1>
+        <p className="page-hero-sub">
+          O endereço que você acessou não existe ou foi movido.
+          Use os links abaixo para continuar navegando.
+        </p>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "32px" }}>
+          <Link to="/" className="btn btn-primary">← Ir para a Home</Link>
+          <Link to="/noticias" className="btn btn-outline">Ver Notícias</Link>
+          <Link to="/eventos" className="btn btn-outline">Ver Eventos</Link>
+        </div>
+      </div>
+    </section>
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </Layout>
-  )
-}
-
-export const Head = () => <Seo title="404: Not Found" />
+    <Footer />
+  </>
+)
 
 export default NotFoundPage
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+export const Head = () => (
+  <>
+    <title>Página não encontrada | BIBLIOMEMOJUS</title>
+    <meta name="description" content="A página que você procura não existe. Volte à home da Bibliomemojus." />
+  </>
+)

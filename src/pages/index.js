@@ -1,10 +1,25 @@
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import { GTS } from "../data/gts"
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query IndexEventos {
+      allMarkdownRemark(
+        filter: { fields: { collection: { eq: "eventos" } } }
+        sort: { frontmatter: { ordem: ASC } }
+        limit: 4
+      ) {
+        nodes {
+          frontmatter { tag titulo descricao url }
+        }
+      }
+    }
+  `)
+  const EVENTS = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
+
   useEffect(() => {
     // Scroll-based active nav link
     const nav = document.getElementById("navbar")
@@ -257,21 +272,16 @@ const IndexPage = () => {
             profissionais e avançam a agenda das bibliotecas judiciárias.
           </p>
           <div className="events-grid">
-            {[
-              { tag: "ENABIJUD", title: "1º Encontro Nacional de Bibliotecas Judiciárias", desc: "Primeira edição que inaugurou o diálogo nacional entre bibliotecas do Poder Judiciário." },
-              { tag: "ENABIJUD", title: "2º Encontro Nacional de Bibliotecas Judiciárias", desc: "Segunda edição, consolidando a rede e expandindo a participação de todo o Brasil." },
-              { tag: "ENABIJUD", title: "3º Encontro Nacional de Bibliotecas Judiciárias", desc: "Terceira edição com apresentação do Diagnóstico da Rede e resultados dos GTs." },
-              { tag: "ENAM", title: "Encontro Nacional de Arquivos e Memória", desc: "Conecta a rede ao universo da gestão documental e da memória do Judiciário." },
-            ].map((ev, i) => (
+            {EVENTS.map((ev, i) => (
               <Link
                 key={i}
                 className={`event-card reveal d${i + 1}`}
-                to="/eventos"
+                to={ev.url || "/eventos"}
               >
                 <span className="ev-tag">{ev.tag}</span>
-                <p className="ev-title">{ev.title}</p>
-                <p className="ev-desc">{ev.desc}</p>
-                <span className="ev-arrow">→</span>
+                <p className="ev-title">{ev.titulo}</p>
+                <p className="ev-desc">{ev.descricao}</p>
+                <span className="ev-arrow" aria-hidden="true">→</span>
               </Link>
             ))}
           </div>

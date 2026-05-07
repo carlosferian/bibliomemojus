@@ -5,6 +5,7 @@ module.exports = {
     siteUrl: `https://bibliomemojus.netlify.app/`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
+import sanitizeHtml from "sanitize-html"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -45,7 +46,7 @@ const EventoTemplate = ({ data }) => {
           <div className="section-inner">
             <div
               className="about-content reveal"
-              dangerouslySetInnerHTML={{ __html: html }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(html) }}
             />
           </div>
         </section>
