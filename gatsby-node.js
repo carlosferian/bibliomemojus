@@ -1,4 +1,5 @@
 const { createFilePath } = require("gatsby-source-filesystem")
+const path = require("path")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -7,4 +8,28 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({ node, name: "collection", value: parent.sourceInstanceName })
     createNodeField({ node, name: "slug", value: createFilePath({ node, getNode }) })
   }
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMarkdownRemark(filter: { fields: { collection: { eq: "eventos" } } }) {
+        nodes {
+          fields { slug }
+          frontmatter { url }
+        }
+      }
+    }
+  `)
+  const template = path.resolve("./src/templates/evento.js")
+  result.data.allMarkdownRemark.nodes.forEach(node => {
+    if (node.frontmatter.url && node.frontmatter.url.startsWith("/")) {
+      createPage({
+        path: node.frontmatter.url,
+        component: template,
+        context: { slug: node.fields.slug },
+      })
+    }
+  })
 }
