@@ -61,7 +61,7 @@ const Navbar = ({ activePage }) => {
           <Link to="/sobre" className={isActive("sobre")} onClick={close}>Sobre</Link>
           <Link to="/#grupos" className={isActive("grupos")} onClick={close}>Grupos de Trabalho</Link>
           <Link to="/eventos" className={isActive("eventos")} onClick={close}>Eventos</Link>
-          <Link to="/projetos" className={isActive("projetos")} onClick={close}>Publicações</Link>
+          <Link to="/projetos" className={isActive("projetos")} onClick={close}>Projetos</Link>
           <Link to="/noticias" className={isActive("noticias")} onClick={close}>Notícias</Link>
           <a href="mailto:bibliomemojus@gmail.com" className="nav-cta" onClick={close}>Fale Conosco</a>
         </div>

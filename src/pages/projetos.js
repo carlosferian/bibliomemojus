@@ -51,16 +51,16 @@ const ProjetosPage = () => {
         <div className="orb orb-1" style={{ opacity: 0.5 }} />
         <div className="page-hero-inner">
           <div>
-            <span className="gt-num-badge">Publicações &amp; Projetos</span>
+            <span className="gt-num-badge">Iniciativas &amp; Projetos</span>
           </div>
           <h1>
-            Conhecimento produzido
+            Iniciativas, publicações
             <br />
-            <strong>pela rede, para a rede</strong>
+            <strong>e projetos da rede</strong>
           </h1>
           <p className="page-hero-sub">
             Publicações, diagnósticos, projetos colaborativos e iniciativas
-            estratégicas da Bibliomemojus.
+            estratégicas desenvolvidas pela Bibliomemojus.
           </p>
         </div>
       </section>
@@ -133,9 +133,9 @@ const ProjetosPage = () => {
       {/* Projetos grid */}
       <section className="section gts">
         <div className="section-inner">
-          <p className="tag-label reveal">Todos os Projetos</p>
+          <p className="tag-label reveal">Iniciativas &amp; Projetos</p>
           <h2 className="section-title reveal d1">
-            Projetos e iniciativas da rede
+            Iniciativas e projetos da rede
           </h2>
           <p className="section-desc reveal d2">
             Conheça as publicações, ferramentas e projetos colaborativos
@@ -195,8 +195,8 @@ export default ProjetosPage
 
 export const Head = () => (
   <SeoHead
-    title="Publicações &amp; Projetos | BIBLIOMEMOJUS"
-    description="Publicações, diagnóstico e projetos da Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias."
+    title="Iniciativas &amp; Projetos | BIBLIOMEMOJUS"
+    description="Iniciativas, publicações, diagnóstico e projetos colaborativos da Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias."
     path="/projetos"
   />
 )

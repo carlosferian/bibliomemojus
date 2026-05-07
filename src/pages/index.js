@@ -3,12 +3,13 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import SeoHead from "../components/SeoHead"
+import Carousel from "../components/Carousel"
 import { GTS } from "../data/gts"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
-    query IndexEventos {
-      allMarkdownRemark(
+    query IndexPage {
+      eventos: allMarkdownRemark(
         filter: { fields: { collection: { eq: "eventos" } } }
         sort: { frontmatter: { ordem: ASC } }
         limit: 4
@@ -17,9 +18,19 @@ const IndexPage = () => {
           frontmatter { tag titulo descricao url }
         }
       }
+      noticias: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "noticias" } } }
+        sort: { frontmatter: { ordem: DESC } }
+        limit: 6
+      ) {
+        nodes {
+          frontmatter { tag titulo resumo data fonte link_interno link_externo }
+        }
+      }
     }
   `)
-  const EVENTS = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
+  const EVENTS = data.eventos.nodes.map(n => n.frontmatter)
+  const NEWS = data.noticias.nodes.map(n => n.frontmatter)
 
   useEffect(() => {
     // Scroll-based active nav link
@@ -169,6 +180,26 @@ const IndexPage = () => {
           <div className="scroll-line" />
         </div>
       </section>
+
+      {/* DESTAQUES */}
+      {NEWS.length > 0 && (
+        <section className="section destaques" id="destaques">
+          <div className="section-inner">
+            <div className="destaques-header">
+              <div>
+                <p className="tag-label destaques-tag">Destaques</p>
+                <h2 className="section-title destaques-title">
+                  Últimas notícias da rede
+                </h2>
+              </div>
+              <Link to="/noticias" className="btn btn-ghost destaques-ver-todas">
+                Ver todas →
+              </Link>
+            </div>
+            <Carousel items={NEWS} />
+          </div>
+        </section>
+      )}
 
       {/* SOBRE */}
       <section className="section about" id="sobre">
