@@ -15,7 +15,8 @@ jobs:
   publica:
     if: >
       github.event.label.name == 'publicar' &&
-      contains(github.event.issue.labels.*.name, 'candidata')
+      !contains(github.event.issue.labels.*.name, 'candidato-evento') &&
+      !contains(github.event.issue.labels.*.name, 'candidata-publicacao')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

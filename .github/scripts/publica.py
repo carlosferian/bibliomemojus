@@ -31,11 +31,12 @@ def slugify(text):
     return text[:50].strip("-")
 
 
-def parse_issue(body):
-    """Detecta e delega para o parser correto (formulário ou legado)."""
-    if re.search(r'^###\s+', body, re.MULTILINE):
-        return _parse_form(body)
-    return _parse_bold(body)
+_FORM_EMPTY = {"_No response_", "_Sem resposta_"}
+
+
+def _clean_form_value(value):
+    """Remove placeholder que o GitHub Forms insere em campos opcionais vazios."""
+    return "" if value.strip() in _FORM_EMPTY else value
 
 
 def _parse_form(body):
@@ -44,7 +45,7 @@ def _parse_form(body):
     parts = re.split(r'^###\s+(.+)$', body, flags=re.MULTILINE)
     it = iter(parts[1:])
     for heading in it:
-        raw[heading.strip()] = html_module.unescape(next(it, '').strip())
+        raw[heading.strip()] = _clean_form_value(html_module.unescape(next(it, '').strip()))
     return {
         "titulo":       raw.get("Título", ""),
         "data":         raw.get("Data", ""),
@@ -71,6 +72,13 @@ def _parse_bold(body):
         raw = match.group(1).strip() if match else ""
         fields[key] = html_module.unescape(raw)
     return fields
+
+
+def parse_issue(body):
+    """Detecta e delega para o parser correto (formulário ou legado)."""
+    if re.search(r'^###\s+', body, re.MULTILINE):
+        return _parse_form(body)
+    return _parse_bold(body)
 
 
 def next_ordem():
