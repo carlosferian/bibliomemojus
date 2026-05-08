@@ -27,6 +27,10 @@ module.exports = {
       options: { name: `publicacoes`, path: `${__dirname}/content/publicacoes` },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `membros`, path: `${__dirname}/content/membros` },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `BIBLIOMEMOJUS`,

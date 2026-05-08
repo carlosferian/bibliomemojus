@@ -1,0 +1,89 @@
+name: 👤 Membro da Coordenação
+description: Adicionar ou atualizar coordenador(a) / subcoordenador(a) de um GT
+labels:
+  - candidata-membro
+body:
+  - type: input
+    id: nome
+    attributes:
+      label: Nome completo
+      placeholder: "Maria da Silva Santos"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cargo
+    attributes:
+      label: Cargo
+      options:
+        - Coordenador
+        - Coordenadora
+        - Subcoordenador
+        - Subcoordenadora
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gt
+    attributes:
+      label: Grupo de Trabalho
+      options:
+        - "1 — Gestão"
+        - "2 — Memória"
+        - "3 — Redes"
+        - "4 — Biblioteca Digital"
+        - "5 — Inovação"
+        - "6 — Agenda 2030"
+        - "7 — Capacitação"
+    validations:
+      required: true
+
+  - type: input
+    id: instituicao
+    attributes:
+      label: Instituição
+      placeholder: "TRF da 3ª Região"
+    validations:
+      required: true
+
+  - type: textarea
+    id: mini_bio
+    attributes:
+      label: Mini currículo
+      description: Breve apresentação profissional (até 500 caracteres)
+      placeholder: "Bibliotecária com especialização em gestão de bibliotecas judiciárias, atuando no TRF da 3ª Região desde 2010..."
+    validations:
+      required: true
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: LinkedIn (opcional)
+      placeholder: "https://linkedin.com/in/..."
+
+  - type: input
+    id: foto
+    attributes:
+      label: URL da foto (opcional)
+      description: Link direto para foto de perfil (Google Drive público, LinkedIn, etc.)
+      placeholder: "https://..."
+
+  - type: dropdown
+    id: ativo
+    attributes:
+      label: Ativo na coordenação?
+      description: Selecione "Não" para remover o membro da página sem excluir o registro.
+      options:
+        - "Sim"
+        - "Não"
+      default: 0
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        > **Como publicar:** após preencher e enviar este formulário, adicione a label **`publicar-membro`** para atualizar a página automaticamente.
+        > Para **remover** um membro, selecione "Não" em *Ativo na coordenação?* e publique novamente.
+        > Para **atualizar** dados de um membro existente, preencha o formulário com o mesmo nome — o registro será sobrescrito.

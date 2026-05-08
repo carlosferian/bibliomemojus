@@ -1,0 +1,44 @@
+name: Publica Membro da Coordenação
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  publica:
+    if: github.event.label.name == 'publicar-membro'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Criar/atualizar arquivo Markdown do membro
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: python .github/scripts/publica-membro.py
+
+      - name: Commit e push
+        run: |
+          git config user.name "bibliomemojus-bot"
+          git config user.email "bibliomemojus-bot@users.noreply.github.com"
+          git add content/membros/
+          git diff --staged --quiet || git commit -m "feat(membros): atualiza membro via issue #${{ github.event.issue.number }}"
+          git push

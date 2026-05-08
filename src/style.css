@@ -239,6 +239,28 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .filter-select-group select { min-width: 0; max-width: 100%; box-sizing: border-box; }
 .filter-count { font-size: 12px; color: var(--muted); margin-left: auto; white-space: nowrap; }
 
+/* ── MEMBROS / QUEM SOMOS ── */
+.members-section { margin-bottom: 52px; }
+.members-section:last-child { margin-bottom: 0; }
+.members-section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.members-gt-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--amber); background: var(--amber-bg); border: 1px solid rgba(154,124,58,.2); padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+.members-gt-name { font-size: 18px; font-weight: 600; color: var(--navy); flex: 1; }
+.members-gt-link { font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .15s; }
+.members-gt-link:hover { color: var(--amber); }
+.members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.member-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
+.member-avatar { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+.member-photo { width: 100%; height: 100%; object-fit: cover; }
+.member-initials { font-size: 16px; font-weight: 700; color: var(--amber-lt); }
+.member-info { flex: 1; min-width: 0; }
+.member-cargo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--amber); margin-bottom: 3px; }
+.member-nome { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 3px; line-height: 1.3; }
+.member-inst { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.member-bio { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+.member-linkedin { font-size: 12px; font-weight: 600; color: var(--amber); text-decoration: none; display: inline-block; }
+.member-linkedin:hover { text-decoration: underline; }
+.member-empty { border: 2px dashed var(--border); border-radius: var(--r-lg); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; font-style: italic; }
+
 /* ── ENQUETE STRIP ── */
 .enquete-strip { padding: 56px 28px; background: var(--navy); text-align: center; position: relative; overflow: hidden; }
 .enquete-strip::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 100% at 50% 50%, rgba(154,124,58,.1), transparent); }

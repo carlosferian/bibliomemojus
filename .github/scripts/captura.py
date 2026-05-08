@@ -67,6 +67,10 @@ LABELS = [
     {"name": "publicado-evento",      "color": "0e8a16", "description": "Evento publicado no site"},
     {"name": "candidata-publicacao",  "color": "bfd4f2", "description": "Publicação aguardando revisão"},
     {"name": "publicada-publicacao",  "color": "0e8a16", "description": "Publicação no site"},
+    # Labels para membros da coordenação
+    {"name": "candidata-membro",      "color": "d93f0b", "description": "Membro aguardando publicação"},
+    {"name": "publicar-membro",       "color": "0075ca", "description": "Aprovado — publicar membro no site"},
+    {"name": "publicada-membro",      "color": "0e8a16", "description": "Membro publicado no site"},
 ]
 
 
