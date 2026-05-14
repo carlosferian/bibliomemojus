@@ -1,0 +1,17 @@
+{
+  "id": "exemplo-003",
+  "titulo": "Terceirização de serviços de biblioteca e gestão documental",
+  "orgao": "Tribunal de Justiça do Estado de Minas Gerais",
+  "esfera": "estadual",
+  "uf": "MG",
+  "categoria": "terceirizacao",
+  "tipoArtefato": "edital",
+  "dataPublicacao": "2025-01-08",
+  "dataCaptura": "2025-01-09",
+  "url": "https://pncp.gov.br/app/contratacoes/01937877000115-1-000003-2025",
+  "urlFonte": "https://pncp.gov.br",
+  "resumo": "Pregão eletrônico para contratação de empresa para prestação de serviços de bibliotecário, auxiliares e gestão documental nas unidades do TJMG.",
+  "valor": 1200000,
+  "status": "aprovado",
+  "tags": ["bibliotecário", "terceirização", "gestão documental", "judiciário estadual"]
+}

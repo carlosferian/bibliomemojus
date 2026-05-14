@@ -1,0 +1,17 @@
+{
+  "id": "exemplo-001",
+  "titulo": "Aquisição de material bibliográfico para acervo jurídico",
+  "orgao": "Tribunal Regional Federal da 3ª Região",
+  "esfera": "federal",
+  "uf": "SP",
+  "categoria": "aquisicaoLivros",
+  "tipoArtefato": "edital",
+  "dataPublicacao": "2025-03-10",
+  "dataCaptura": "2025-03-11",
+  "url": "https://pncp.gov.br/app/contratacoes/00394633000230-1-000001-2025",
+  "urlFonte": "https://pncp.gov.br",
+  "resumo": "Processo licitatório para aquisição de material bibliográfico — livros jurídicos, periódicos e bases de dados — destinado ao acervo da Biblioteca Judiciária do TRF-3.",
+  "valor": 85000,
+  "status": "aprovado",
+  "tags": ["livros", "acervo", "judiciário federal", "periódicos"]
+}

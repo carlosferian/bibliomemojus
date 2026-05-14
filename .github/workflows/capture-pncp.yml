@@ -1,0 +1,66 @@
+name: Captura PNCP — REFARQ
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # diariamente às 06h UTC (03h Brasília)
+  workflow_dispatch:        # permite execução manual
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    outputs:
+      created: ${{ steps.capture.outputs.created }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Capturar artefatos do PNCP
+        id: capture
+        run: node scripts/capture-pncp.js
+
+      - name: Verificar se há novos artefatos
+        id: check
+        run: |
+          COUNT="${{ steps.capture.outputs.created }}"
+          echo "Novos artefatos: ${COUNT:-0}"
+          echo "has_changes=$([ "${COUNT:-0}" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir Pull Request com novos artefatos
+        if: steps.check.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: refarq/capture-${{ github.run_id }}
+          commit-message: "refarq: ${{ steps.capture.outputs.created }} artefato(s) capturado(s) do PNCP"
+          title: "REFARQ: ${{ steps.capture.outputs.created }} novo(s) artefato(s) capturado(s)"
+          body: |
+            ## Artefatos capturados automaticamente do PNCP
+
+            **Data da captura:** ${{ github.run_id && 'hoje' }}
+            **Novos artefatos:** ${{ steps.capture.outputs.created }}
+
+            ### Como revisar
+
+            1. Examine os arquivos `.json` adicionados em `src/data/artefatos/`
+            2. **Remova** os irrelevantes (apague o arquivo)
+            3. **Edite** campos como `resumo`, `categoria` e `tags` se necessário
+            4. Faça **merge** para publicar os aprovados no site
+
+            > Os artefatos com `"status": "pendente"` serão exibidos no site
+            > somente após o merge deste PR.
+
+            ---
+            *Gerado automaticamente pelo workflow `capture-pncp.yml`*
+          labels: refarq, curadoria
+          delete-branch: true

@@ -64,6 +64,7 @@ const Navbar = ({ activePage }) => {
           <Link to="/eventos" className={isActive("eventos")} onClick={close}>Eventos</Link>
           <Link to="/projetos" className={isActive("projetos")} onClick={close}>Projetos</Link>
           <Link to="/noticias" className={isActive("noticias")} onClick={close}>Notícias</Link>
+          <Link to="/refarq" className={isActive("refarq")} onClick={close}>REFARQ</Link>
           <a href="mailto:bibliomemojus@gmail.com" className="nav-cta" onClick={close}>Fale Conosco</a>
         </div>
 

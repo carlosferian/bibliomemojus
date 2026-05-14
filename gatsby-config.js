@@ -10,6 +10,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: { name: `images`, path: `${__dirname}/src/images` },
@@ -29,6 +30,10 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: { name: `membros`, path: `${__dirname}/content/membros` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `artefatos`, path: `${__dirname}/src/data/artefatos` },
     },
     {
       resolve: `gatsby-plugin-manifest`,
