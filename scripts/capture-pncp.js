@@ -68,6 +68,13 @@ const CATEGORIAS = {
     "consultoria bibliotecária", "consultoria em biblioteconomia",
     "projeto de biblioteca", "diagnóstico de biblioteca",
   ],
+  apresentacoesCulturais: [
+    "apresentação cultural", "apresentações culturais", "espetáculo cultural",
+    "evento cultural", "sarau", "recital", "exposição cultural",
+    "programação cultural", "serviços culturais", "atividade cultural",
+    "contação de histórias", "mediação de leitura", "clube de leitura",
+    "animação cultural", "difusão cultural",
+  ],
 }
 
 // Fallback para artefatos que passam no filtro mas não se encaixam em uma categoria específica

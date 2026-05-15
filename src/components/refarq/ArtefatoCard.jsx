@@ -12,8 +12,9 @@ const CATEGORIA_LABELS = {
   inventarioAcervo:     "Inventário de Acervo",
   rfid:                 "RFID",
   restauracao:          "Restauração",
-  consultoria:          "Consultoria",
-  outro:                "Outro",
+  consultoria:              "Consultoria",
+  apresentacoesCulturais:   "Apresentações Culturais",
+  outro:                    "Outro",
 }
 
 const TIPO_LABELS = {
