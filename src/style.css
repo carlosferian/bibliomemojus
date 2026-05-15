@@ -69,6 +69,44 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
 .hamburger span { width: 20px; height: 1.5px; background: rgba(255,255,255,.8); border-radius: 2px; }
 
+/* ── DROPDOWN PROJETOS ── */
+.nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+.nav-dropdown-btn {
+  background: none; border: none; cursor: pointer; font-family: var(--sans);
+  font-size: 13px; font-weight: 400; color: rgba(255,255,255,.65);
+  padding: 7px 12px; border-radius: 6px; display: flex; align-items: center; gap: 4px;
+  transition: color .18s; position: relative;
+}
+.nav-dropdown-btn::after { content: ''; position: absolute; bottom: 3px; left: 50%; right: 50%; height: 1px; background: var(--amber-lt); transition: left .22s, right .22s; }
+.nav-dropdown-btn:hover, .nav-dropdown-btn.active { color: #fff; }
+.nav-dropdown-btn.active::after, .nav-dropdown-btn:hover::after { left: 11px; right: 11px; }
+.nav-dropdown-caret { font-size: 10px; transition: transform .18s; line-height: 1; }
+.nav-dropdown-caret.is-open { transform: rotate(180deg); }
+.nav-dropdown-panel {
+  position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+  background: rgba(22,34,47,.97); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-lg);
+  padding: 8px; min-width: 220px; display: flex; flex-direction: column; gap: 2px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.35); z-index: 300;
+}
+.nav-dropdown-panel a {
+  display: block; padding: 9px 14px; border-radius: var(--r);
+  font-size: 13px; color: rgba(255,255,255,.7); text-decoration: none;
+  transition: background .15s, color .15s; white-space: nowrap;
+}
+.nav-dropdown-panel a:hover, .nav-dropdown-panel a.active {
+  background: rgba(184,149,80,.12); color: #fff;
+}
+.nav-dropdown-panel a::after { display: none; }
+/* Mobile */
+.nav-dropdown-mobile { display: flex; flex-direction: column; gap: 2px; padding-left: 16px; }
+.nav-sub-link {
+  display: block; padding: 7px 12px; border-radius: 6px;
+  font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none;
+  border-left: 2px solid rgba(184,149,80,.3); transition: color .15s;
+}
+.nav-sub-link:hover, .nav-sub-link.active { color: #fff; border-left-color: var(--amber-lt); }
+
 /* ── HERO ── */
 .hero { min-height: 100vh; background: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 100px 28px 60px; position: relative; overflow: hidden; }
 .orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(90px); }

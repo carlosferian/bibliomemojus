@@ -16,8 +16,10 @@ const MENU_OPEN_STYLE = {
 }
 
 const Navbar = ({ activePage }) => {
-  const navRef = useRef(null)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const navRef        = useRef(null)
+  const dropRef       = useRef(null)
+  const [menuOpen,    setMenuOpen]    = useState(false)
+  const [dropOpen,    setDropOpen]    = useState(false)
 
   useEffect(() => {
     const nav = navRef.current
@@ -29,8 +31,18 @@ const Navbar = ({ activePage }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const close = () => setMenuOpen(false)
+  // Fecha dropdown ao clicar fora (desktop)
+  useEffect(() => {
+    const handler = e => {
+      if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false)
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [])
+
+  const close = () => { setMenuOpen(false); setDropOpen(false) }
   const isActive = page => (activePage === page ? "active" : "")
+  const isProjetosActive = activePage === "projetos" || activePage === "refarq" ? "active" : ""
 
   return (
     <nav
@@ -62,9 +74,59 @@ const Navbar = ({ activePage }) => {
           <Link to="/quem-somos" className={isActive("quem-somos")} onClick={close}>Coordenação</Link>
           <Link to="/#grupos" className={isActive("grupos")} onClick={close}>Grupos de Trabalho</Link>
           <Link to="/eventos" className={isActive("eventos")} onClick={close}>Eventos</Link>
-          <Link to="/projetos" className={isActive("projetos")} onClick={close}>Projetos</Link>
+
+          {/* ── Dropdown Projetos ── */}
+          {menuOpen ? (
+            /* Mobile: expand inline */
+            <>
+              <button
+                className={`nav-dropdown-btn${isProjetosActive ? " active" : ""}`}
+                onClick={() => setDropOpen(o => !o)}
+                aria-expanded={dropOpen}
+              >
+                Projetos <span className={`nav-dropdown-caret${dropOpen ? " is-open" : ""}`} aria-hidden="true">▾</span>
+              </button>
+              {dropOpen && (
+                <div className="nav-dropdown-mobile">
+                  <Link to="/projetos" className={`nav-sub-link${isActive("projetos")}`} onClick={close}>
+                    Iniciativas & Projetos
+                  </Link>
+                  <Link to="/refarq" className={`nav-sub-link${isActive("refarq")}`} onClick={close}>
+                    REFARQ — Artefatos de Contratação
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            /* Desktop: hover dropdown */
+            <div
+              className="nav-dropdown-wrap"
+              ref={dropRef}
+              onMouseEnter={() => setDropOpen(true)}
+              onMouseLeave={() => setDropOpen(false)}
+            >
+              <button
+                className={`nav-dropdown-btn${isProjetosActive ? " active" : ""}`}
+                aria-haspopup="true"
+                aria-expanded={dropOpen}
+                onClick={() => setDropOpen(o => !o)}
+              >
+                Projetos <span className={`nav-dropdown-caret${dropOpen ? " is-open" : ""}`} aria-hidden="true">▾</span>
+              </button>
+              {dropOpen && (
+                <div className="nav-dropdown-panel" role="menu">
+                  <Link to="/projetos" role="menuitem" className={isActive("projetos")} onClick={close}>
+                    Iniciativas & Projetos
+                  </Link>
+                  <Link to="/refarq" role="menuitem" className={isActive("refarq")} onClick={close}>
+                    REFARQ — Artefatos de Contratação
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
+
           <Link to="/noticias" className={isActive("noticias")} onClick={close}>Notícias</Link>
-          <Link to="/refarq" className={isActive("refarq")} onClick={close}>REFARQ</Link>
           <a href="mailto:bibliomemojus@gmail.com" className="nav-cta" onClick={close}>Fale Conosco</a>
         </div>
 
