@@ -36,20 +36,41 @@ FEEDS = [
         "tag": "Biblioteca Judiciária",
     },
     {
-        "url": "https://news.google.com/rss/search?q=%22gest%C3%A3o+documental%22+judici%C3%A1rio&hl=pt-BR&gl=BR&ceid=BR:pt",
+        "url": "https://news.google.com/rss/search?q=%22gest%C3%A3o+documental%22+biblioteca+judici%C3%A1rio&hl=pt-BR&gl=BR&ceid=BR:pt",
         "tag": "Gestão Documental",
     },
     {
-        "url": "https://news.google.com/rss/search?q=ciencia+informacao+juridica&hl=pt-BR&gl=BR&ceid=BR:pt",
+        "url": "https://news.google.com/rss/search?q=%22ci%C3%AAncia+da+informa%C3%A7%C3%A3o%22+judici%C3%A1rio+biblioteca&hl=pt-BR&gl=BR&ceid=BR:pt",
         "tag": "Ciência da Informação",
+    },
+    {
+        "url": "https://news.google.com/rss/search?q=%22biblioteca+jur%C3%ADdica%22+OR+%22acervo+judici%C3%A1rio%22&hl=pt-BR&gl=BR&ceid=BR:pt",
+        "tag": "Biblioteca Judiciária",
     },
 ]
 
-# Filtra itens claramente fora do escopo
-REQUIRED_KEYWORDS = [
-    "biblioteca", "judici", "bibliomemojus", "enabijud",
-    "biblioteconomia", "tribunal", "cnj", "gestão documental",
-    "ciência da informação", "poder judiciário", "memojus",
+# ── Filtro de relevância ───────────────────────────────────────────────────────
+# O item só passa se contiver AO MENOS uma keyword de CADA grupo.
+# Isso evita notícias sobre gestão documental ou memória institucional
+# que não têm relação direta com bibliotecas do Judiciário.
+
+LIBRARY_KEYWORDS = [
+    "biblioteca", "acervo bibliográfico", "biblioteconomia",
+    "bibliotecári", "bibliomemojus", "enabijud", "memojus",
+    "ciência da informação", "biblioteca jurídica",
+]
+
+JUDICIAL_KEYWORDS = [
+    "judici", "tribunal", "cnj", "stj", "stf", "trf", "tst", "tse",
+    "poder judiciário", "jurídic", "vara ", "fórum ",
+]
+
+# Se qualquer um destes aparecer, o item é descartado independentemente do resto.
+BLOCK_KEYWORDS = [
+    "memória ram", "memória flash", "gestão de memória",
+    "memorial descritivo", "arquivo nacional", "arquivo público",
+    "secretaria de estado", "prefeitura", "câmara municipal",
+    "gestão de documentos fiscais", "nota fiscal",
 ]
 
 MONTHS_PT = [
@@ -100,7 +121,11 @@ def get_existing_urls():
 
 def is_relevant(title, summary):
     text = (title + " " + summary).lower()
-    return any(kw in text for kw in REQUIRED_KEYWORDS)
+    if any(kw in text for kw in BLOCK_KEYWORDS):
+        return False
+    has_library  = any(kw in text for kw in LIBRARY_KEYWORDS)
+    has_judicial = any(kw in text for kw in JUDICIAL_KEYWORDS)
+    return has_library and has_judicial
 
 
 def parse_date(entry):
