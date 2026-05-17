@@ -424,6 +424,7 @@ footer { background: #0D1720; color: rgba(255,255,255,.55); padding: 60px 28px 3
   background-color: #ffffff; border: 1px solid #e2ded6; border-radius: 14px;
   padding: 22px; display: flex; flex-direction: column; gap: 10px;
   transition: box-shadow .2s, transform .2s; color: #1a1916;
+  color-scheme: light;
 }
 .artefato-card:hover { box-shadow: 0 8px 32px rgba(22,34,47,.12); transform: translateY(-2px); }
 
@@ -446,16 +447,14 @@ footer { background: #0D1720; color: rgba(255,255,255,.55); padding: 60px 28px 3
 .artefato-card-titulo { font-size: 14px; font-weight: 600; color: #16222F; line-height: 1.4; }
 .artefato-card-orgao { font-size: 12px; color: #6b6760; }
 .artefato-card-resumo { font-size: 13px; color: #1a1916; line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.artefato-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid #e2ded6; }
-.artefato-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.artefato-card-header { background-color: #ffffff; }
+.artefato-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; background-color: #ffffff; }
 .artefato-card-valor { font-size: 12px; font-weight: 600; color: #16222F; }
 .artefato-card-link {
   font-size: 12px; font-weight: 600; color: #9a7c3a; text-decoration: none;
-  white-space: nowrap; transition: color .15s;
+  white-space: nowrap; transition: color .15s; background-color: #ffffff;
 }
 .artefato-card-link:hover { color: #16222F; }
-.artefato-card-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-.artefato-tag { font-size: 10px; background-color: #f4f2ed; color: #6b6760; padding: 2px 8px; border-radius: 100px; border: 1px solid #e2ded6; }
 
 /* Vazio */
 .refarq-empty { text-align: center; padding: 64px 24px; color: var(--muted); }

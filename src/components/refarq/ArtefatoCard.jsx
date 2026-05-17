@@ -76,35 +76,25 @@ const ArtefatoCard = ({ artefato, index = 0 }) => {
         <p className="artefato-card-resumo">{resumo}</p>
       )}
 
-      <footer className="artefato-card-footer">
-        <div className="artefato-card-meta">
-          <span className="artefato-badge artefato-badge--cat">
-            {CATEGORIA_LABELS[categoria] || categoria}
-          </span>
-          {valor && (
-            <span className="artefato-card-valor">{formatValor(valor)}</span>
-          )}
-        </div>
-
-        {url && (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="artefato-card-link"
-            aria-label={`Ver artefato: ${titulo}`}
-          >
-            Ver no PNCP →
-          </a>
+      <div className="artefato-card-meta">
+        <span className="artefato-badge artefato-badge--cat">
+          {CATEGORIA_LABELS[categoria] || categoria}
+        </span>
+        {valor && (
+          <span className="artefato-card-valor">{formatValor(valor)}</span>
         )}
-      </footer>
+      </div>
 
-      {tags.length > 0 && (
-        <ul className="artefato-card-tags" aria-label="Tags">
-          {tags.map(tag => (
-            <li key={tag} className="artefato-tag">{tag}</li>
-          ))}
-        </ul>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="artefato-card-link"
+          aria-label={`Ver artefato: ${titulo}`}
+        >
+          Ver no PNCP →
+        </a>
       )}
     </article>
   )
