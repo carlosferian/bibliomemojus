@@ -1,0 +1,17 @@
+{
+  "id": "trece-digitalizacao-acervo-2023",
+  "titulo": "Digitalização do acervo documental do TRE-CE com repositório arquivístico digital",
+  "orgao": "Tribunal Regional Eleitoral do Ceará",
+  "esfera": "federal",
+  "uf": "CE",
+  "categoria": "digitalizacao",
+  "tipoArtefato": "contrato",
+  "dataPublicacao": "2023-01-11",
+  "dataCaptura": "2026-05-17",
+  "url": "https://www.tre-ce.jus.br/comunicacao/noticias/2023/Marco/digitalizacao-do-acervo-documental-do-tre-ce-preserva-patrimonio-cultural-arquivistico",
+  "urlFonte": "https://www.tre-ce.jus.br",
+  "resumo": "Contratação da empresa Tempo Real Produção e Comunicação Ltda. para digitalização de documentos vitais do Arquivo Central do TRE-CE, adotando repositório arquivístico digital confiável (RDC-Arq) com software livre e código aberto para preservação de longo prazo, nos termos da Resolução TRE-CE nº 807/2021.",
+  "valor": null,
+  "status": "aprovado",
+  "tags": ["digitalização", "acervo", "arquivo", "TRE-CE", "Ceará", "memória institucional", "RDC-Arq", "preservação digital"]
+}

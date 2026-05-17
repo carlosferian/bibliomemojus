@@ -1,0 +1,17 @@
+{
+  "id": "stj-folio-rvbi-2024",
+  "titulo": "Implantação do sistema FOLIO (EBSCO) para a Rede Virtual de Bibliotecas — RVBI",
+  "orgao": "Superior Tribunal de Justiça",
+  "esfera": "federal",
+  "uf": "DF",
+  "categoria": "sistemasGestao",
+  "tipoArtefato": "contrato",
+  "dataPublicacao": "2024-03-01",
+  "dataCaptura": "2026-05-17",
+  "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/02092024-STJ-sedia-reuniao-sobre-novo-sistema-de-gestao-da-Rede-Virtual-de-Bibliotecas.aspx",
+  "urlFonte": "https://www.stj.jus.br",
+  "resumo": "Substituição do sistema legado pelo FOLIO — plataforma open-source de gestão de bibliotecas com implementação pela EBSCO Information Services — para uso pela Rede Virtual de Bibliotecas (RVBI), coordenada pelo STJ e abrangendo 12 bibliotecas do poder público federal. Maior mudança de SIGB nas bibliotecas judiciárias federais em décadas.",
+  "valor": null,
+  "status": "aprovado",
+  "tags": ["FOLIO", "EBSCO", "SIGB", "RVBI", "STJ", "sistema de gestão de biblioteca", "open source", "modernização", "Senado Federal"]
+}
