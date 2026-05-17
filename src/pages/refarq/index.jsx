@@ -127,18 +127,18 @@ const RefarqPage = () => {
         {/* ── Hero ── */}
         <section className="page-hero" style={{ background: "var(--navy)" }}>
           <div className="page-hero-inner">
-            <span className="page-badge reveal d1">Repositório</span>
+            <span className="page-badge reveal d1">Contratações Públicas</span>
             <h1 className="page-hero-title reveal d2">
-              REFARQ
-              <span className="page-hero-sub"> — Repositório de Artefatos de Contratação</span>
+              Banco de Contratações
+              <span className="page-hero-sub"> para Bibliotecas Judiciárias</span>
             </h1>
             <p className="page-hero-desc reveal d3">
               Editais, termos de referência e contratos relacionados a bibliotecas judiciárias,
-              acervos documentais e gestão da informação, coletados automaticamente do PNCP.
+              acervos documentais e gestão da informação — coletados do PNCP e curados pela rede.
             </p>
             {TODOS.length > 0 && (
               <p className="refarq-hero-count reveal d4">
-                <strong>{TODOS.length}</strong> artefato{TODOS.length !== 1 ? "s" : ""} disponíve{TODOS.length !== 1 ? "is" : "l"}
+                <strong>{TODOS.length}</strong> contratação{TODOS.length !== 1 ? "s" : ""} disponíve{TODOS.length !== 1 ? "is" : "l"}
               </p>
             )}
           </div>
@@ -269,17 +269,17 @@ const RefarqPage = () => {
           </div>
         </section>
 
-        {/* ── Sobre o REFARQ ── */}
+        {/* ── Sobre ── */}
         <section className="section refarq-sobre">
           <div className="section-inner">
             <div className="refarq-sobre-grid">
               <div>
-                <h2 className="section-title">O que é o REFARQ?</h2>
+                <h2 className="section-title">Sobre o banco de contratações</h2>
                 <p>
-                  O REFARQ é um repositório curado de artefatos de contratação pública
-                  — editais, termos de referência, estudos técnicos e atas de registro
-                  de preços — relacionados a bibliotecas judiciárias, acervos documentais
-                  e gestão da informação.
+                  Reunimos editais, termos de referência, estudos técnicos e atas de
+                  registro de preços relacionados a bibliotecas judiciárias, acervos
+                  documentais e gestão da informação — tudo em um só lugar para
+                  facilitar o trabalho dos profissionais da rede.
                 </p>
                 <p style={{ marginTop: "1rem" }}>
                   Os artefatos são coletados automaticamente do{" "}
@@ -319,8 +319,8 @@ const RefarqPage = () => {
 
 export const Head = () => (
   <SeoHead
-    title="REFARQ — Repositório de Artefatos de Contratação | BIBLIOMEMOJUS"
-    description="Editais, termos de referência e contratos relacionados a bibliotecas judiciárias e gestão documental, coletados do PNCP e curados pela rede Bibliomemojus."
+    title="Banco de Contratações para Bibliotecas Judiciárias | BIBLIOMEMOJUS"
+    description="Editais, termos de referência e contratos públicos para bibliotecas judiciárias — coletados do PNCP e curados pela rede Bibliomemojus."
     path="/refarq"
   />
 )

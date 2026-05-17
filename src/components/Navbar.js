@@ -92,7 +92,7 @@ const Navbar = ({ activePage }) => {
                     Iniciativas & Projetos
                   </Link>
                   <Link to="/refarq" className={`nav-sub-link${isActive("refarq")}`} onClick={close}>
-                    REFARQ — Artefatos de Contratação
+                    Banco de Contratações
                   </Link>
                 </div>
               )}
@@ -119,7 +119,7 @@ const Navbar = ({ activePage }) => {
                     Iniciativas & Projetos
                   </Link>
                   <Link to="/refarq" role="menuitem" className={isActive("refarq")} onClick={close}>
-                    REFARQ — Artefatos de Contratação
+                    Banco de Contratações
                   </Link>
                 </div>
               )}
