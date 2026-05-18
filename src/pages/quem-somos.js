@@ -103,9 +103,8 @@ const QuemSomosPage = () => {
             <strong>nós</strong>
           </h1>
           <p className="page-hero-sub">
-            Conheça os coordenadores e subcoordenadores das sete Coordenações
-            da Bibliomemojus — profissionais de bibliotecas judiciárias de todo
-            o Brasil.
+            Conheça os coordenadores das cinco Coordenações da Bibliomemojus
+            — profissionais de bibliotecas judiciárias de todo o Brasil.
           </p>
         </div>
       </section>
@@ -124,6 +123,12 @@ const QuemSomosPage = () => {
                   </Link>
                 </div>
 
+                {gt.coordenador && (
+                  <p style={{ fontSize: "14px", color: "var(--muted)", marginBottom: "8px" }}>
+                    Coordenador(a): <strong style={{ color: "var(--navy)" }}>{gt.coordenador}</strong>
+                  </p>
+                )}
+
                 {gtMembers.length > 0 ? (
                   <div className="members-grid">
                     {gtMembers.map((m, i) => (
@@ -132,7 +137,9 @@ const QuemSomosPage = () => {
                   </div>
                 ) : (
                   <div className="member-empty">
-                    A coordenação deste GT será divulgada em breve.
+                    {gt.coordenador
+                      ? "Demais membros serão divulgados em breve."
+                      : "Coordenação com vaga em aberto. Membros serão divulgados em breve."}
                   </div>
                 )}
               </div>
@@ -164,7 +171,7 @@ export default QuemSomosPage
 export const Head = () => (
   <SeoHead
     title="Quem Somos Nós | BIBLIOMEMOJUS"
-    description="Conheça a coordenação da Bibliomemojus — coordenadores e subcoordenadores das sete Coordenações da Rede Nacional de Bibliotecas Judiciárias."
+    description="Conheça os coordenadores das cinco Coordenações da Bibliomemojus — Rede Nacional de Bibliotecas Judiciárias."
     path="/quem-somos"
   />
 )

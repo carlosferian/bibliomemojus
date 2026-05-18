@@ -1,8 +1,8 @@
 ---
-titulo: "Sete Coordenações em atividade"
+titulo: "Cinco Coordenações em atividade"
 data: "2022"
 tag: "Coordenações"
-resumo: "A Bibliomemojus estruturou sete Coordenações cobrindo Gestão, Memória, Redes, Biblioteca Digital, Inovação, Agenda 2030 e Capacitação. Cada coordenação desenvolve planos de ação próprios."
+resumo: "A Bibliomemojus é estruturada em cinco Coordenações: Gestão de Bibliotecas Físicas e Digitais, Memória, Inovação e Tecnologia, Capacitação e Direitos Humanos e Agenda 2030. Cada coordenação desenvolve planos de ação próprios."
 link_interno: "/#grupos"
 link_externo: ""
 fonte: ""

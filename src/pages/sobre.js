@@ -111,10 +111,10 @@ const SobrePage = () => {
         <div className="section-inner">
           <p className="tag-label reveal">A rede em números</p>
           <h2 className="section-title reveal d1">
-            Sete eixos de atuação colaborativa
+            Cinco eixos de atuação colaborativa
           </h2>
           <p className="section-desc reveal d2">
-            A Bibliomemojus é estruturada em 7 Coordenações que atuam em eixos
+            A Bibliomemojus é estruturada em 5 Coordenações que atuam em eixos
             estratégicos com Planos de Ação, Calendários próprios e produção de
             conteúdo especializado. A rede reúne bibliotecas de todos os cinco
             ramos do Poder Judiciário brasileiro.
@@ -129,13 +129,11 @@ const SobrePage = () => {
             }}
           >
             {[
-              { num: "Coord. 1", name: "Gestão", slug: "gt1" },
+              { num: "Coord. 1", name: "Gestão de Bibliotecas Físicas e Digitais", slug: "gt1" },
               { num: "Coord. 2", name: "Memória", slug: "gt2" },
-              { num: "Coord. 3", name: "Redes", slug: "gt3" },
-              { num: "Coord. 4", name: "Biblioteca Digital", slug: "gt4" },
-              { num: "Coord. 5", name: "Inovação", slug: "gt5" },
-              { num: "Coord. 6", name: "Agenda 2030", slug: "gt6" },
-              { num: "Coord. 7", name: "Capacitação", slug: "gt7" },
+              { num: "Coord. 3", name: "Inovação e Tecnologia", slug: "gt3" },
+              { num: "Coord. 4", name: "Capacitação", slug: "gt4" },
+              { num: "Coord. 5", name: "Direitos Humanos e Agenda 2030", slug: "gt5" },
             ].map(gt => (
               <Link
                 key={gt.slug}
@@ -189,7 +187,7 @@ const SobrePage = () => {
               <ul className="goals reveal d2">
                 {[
                   "Criada em 16 de maio de 2022 no II Encontro Nacional de Memória do Poder Judiciário",
-                  "7 Coordenações ativas com Planos de Ação e Calendários próprios",
+                  "5 Coordenações ativas com Planos de Ação e Calendários próprios",
                   "3 edições do ENABIJUD realizadas com participação nacional",
                   "Primeiro diagnóstico situacional nacional das bibliotecas judiciárias",
                   "Integração com os cinco ramos do Poder Judiciário brasileiro",

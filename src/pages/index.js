@@ -151,7 +151,7 @@ const IndexPage = () => {
             <p className="hs-label">Rede em números</p>
             <div className="hs-item">
               <span className="hs-num">
-                <span className="cnt" data-target="7">0</span>
+                <span className="cnt" data-target="5">0</span>
               </span>
               <span className="hs-desc">Coordenações ativas</span>
             </div>
@@ -264,7 +264,7 @@ const IndexPage = () => {
         <div className="section-inner">
           <p className="tag-label reveal">Coordenações</p>
           <h2 className="section-title reveal d1">
-            Sete eixos de atuação colaborativa
+            Cinco eixos de atuação colaborativa
           </h2>
           <p className="section-desc reveal d2">
             Cada Coordenação atua em um eixo estratégico com Planos de Ação,
@@ -339,7 +339,7 @@ const IndexPage = () => {
                   A Bibliomemojus realizou um amplo diagnóstico situacional com
                   total adesão das bibliotecas do Poder Judiciário. Os resultados
                   são apresentados em painéis de Business Intelligence e
-                  nortearão as ações das sete Coordenações.
+                  nortearão as ações das cinco Coordenações.
                 </p>
                 <p>
                   Além do diagnóstico, a rede produz publicações, relatórios e
@@ -400,7 +400,7 @@ const IndexPage = () => {
             </Link>
             <Link className="news-card reveal d2" to="/#grupos">
               <p className="news-date">Coordenações</p>
-              <p className="news-title">Participe de uma das 7 Coordenações</p>
+              <p className="news-title">Participe de uma das 5 Coordenações</p>
               <p className="news-excerpt">
                 As Coordenações estão ativas e produzindo conteúdo. Veja planos
                 de ação, calendários e materiais.

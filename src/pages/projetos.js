@@ -83,7 +83,7 @@ const ProjetosPage = () => {
                 </p>
                 <p>
                   Os resultados são apresentados em painéis de Business
-                  Intelligence e nortearão as ações das sete Coordenações nos
+                  Intelligence e nortearão as ações das cinco Coordenações nos
                   próximos ciclos de planejamento.
                 </p>
                 <p>

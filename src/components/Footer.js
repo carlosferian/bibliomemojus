@@ -28,13 +28,11 @@ const Footer = () => (
         <div className="footer-col">
           <h4>Coordenações</h4>
           <ul>
-            <li><Link to="/grupos/gt1">Coord. 1 — Gestão</Link></li>
+            <li><Link to="/grupos/gt1">Coord. 1 — Gestão de Bibliotecas</Link></li>
             <li><Link to="/grupos/gt2">Coord. 2 — Memória</Link></li>
-            <li><Link to="/grupos/gt3">Coord. 3 — Redes</Link></li>
-            <li><Link to="/grupos/gt4">Coord. 4 — Biblioteca Digital</Link></li>
-            <li><Link to="/grupos/gt5">Coord. 5 — Inovação</Link></li>
-            <li><Link to="/grupos/gt6">Coord. 6 — Agenda 2030</Link></li>
-            <li><Link to="/grupos/gt7">Coord. 7 — Capacitação</Link></li>
+            <li><Link to="/grupos/gt3">Coord. 3 — Inovação e Tecnologia</Link></li>
+            <li><Link to="/grupos/gt4">Coord. 4 — Capacitação</Link></li>
+            <li><Link to="/grupos/gt5">Coord. 5 — Direitos Humanos e Agenda 2030</Link></li>
           </ul>
         </div>
         <div className="footer-col">

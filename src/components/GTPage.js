@@ -55,6 +55,11 @@ const GTPage = ({ gt, prev, next }) => {
           </div>
           <h1>{gt.name}</h1>
           <p className="page-hero-sub">{gt.shortDesc}</p>
+          {gt.coordenador && (
+            <p style={{ marginTop: "8px", fontSize: "14px", color: "rgba(255,255,255,.65)" }}>
+              Coordenador(a): <strong style={{ color: "rgba(255,255,255,.9)" }}>{gt.coordenador}</strong>
+            </p>
+          )}
           <div className="page-hero-chips">
             {gt.chips.map(chip => (
               <span className="page-hero-chip" key={chip}>{chip}</span>
