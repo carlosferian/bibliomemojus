@@ -12,7 +12,8 @@ const crypto = require("crypto")
 // ── Configuração ─────────────────────────────────────────────────────────────
 
 const ARTEFATOS_DIR = path.join(__dirname, "..", "src", "data", "artefatos")
-const PNCP_BASE     = "https://pncp.gov.br/api/pncp/v1"
+// API pública de consulta — sem autenticação (distinta da /api/pncp que é privada)
+const PNCP_BASE     = "https://pncp.gov.br/api/consulta/v1"
 const PAGE_SIZE     = 500
 const DAYS_BACK     = 7   // quantos dias retroativos buscar
 
@@ -170,8 +171,9 @@ function existingIds() {
 // ── Busca PNCP ────────────────────────────────────────────────────────────────
 
 async function fetchPage(dataInicial, dataFinal, pagina) {
+  // Endpoint correto da API pública (singular: publicacao)
   const url =
-    `${PNCP_BASE}/contratacoes/publicacoes` +
+    `${PNCP_BASE}/contratacoes/publicacao` +
     `?dataInicial=${dataInicial}&dataFinal=${dataFinal}` +
     `&pagina=${pagina}&tamanhoPagina=${PAGE_SIZE}`
   console.log(`  GET ${url}`)
@@ -187,9 +189,9 @@ async function buscarArtefatos() {
   const resultados = [...(first.data || [])]
 
   for (let p = 2; p <= Math.min(totalPaginas, 10); p++) {
+    await new Promise(r => setTimeout(r, 700)) // respeita rate limit da API pública
     const page = await fetchPage(dataInicial, dataFinal, p)
     resultados.push(...(page.data || []))
-    await new Promise(r => setTimeout(r, 300))
   }
 
   console.log(`Total de registros recebidos: ${resultados.length}`)
@@ -217,8 +219,11 @@ function transformar(raw) {
   const dataPublicacao =
     (raw.dataPublicacaoPncp || raw.dataPublicacaoFutura || "").slice(0, 10)
 
+  // numeroControlePNCP → "00531640000128-1-000216/2023" → URL direta da contratação
   const url = raw.linkSistemaOrigem ||
-    `https://pncp.gov.br/app/contratacoes/${(raw.numeroControlePNCP || "").replace(/\//g, "-")}`
+    (raw.numeroControlePNCP
+      ? `https://pncp.gov.br/app/editais/${raw.numeroControlePNCP}`
+      : "https://pncp.gov.br")
 
   return {
     id,

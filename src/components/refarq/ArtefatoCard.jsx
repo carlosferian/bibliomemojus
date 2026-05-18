@@ -93,7 +93,7 @@ const ArtefatoCard = ({ artefato, index = 0 }) => {
           className="artefato-card-link"
           aria-label={`Ver artefato: ${titulo}`}
         >
-          Ver no PNCP →
+          {url.includes("pncp.gov.br") ? "Ver no PNCP →" : "Ver documento →"}
         </a>
       )}
     </article>
