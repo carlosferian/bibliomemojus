@@ -83,8 +83,8 @@ const ProjetosPage = () => {
                 </p>
                 <p>
                   Os resultados são apresentados em painéis de Business
-                  Intelligence e nortearão as ações dos sete Grupos de Trabalho
-                  nos próximos ciclos de planejamento.
+                  Intelligence e nortearão as ações das sete Coordenações nos
+                  próximos ciclos de planejamento.
                 </p>
                 <p>
                   O diagnóstico representa um marco histórico para as bibliotecas

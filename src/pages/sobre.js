@@ -77,7 +77,7 @@ const SobrePage = () => {
               </div>
               <div className="reveal d3" style={{ marginTop: "28px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
                 <Link to="/#grupos" className="btn btn-primary">
-                  Ver Grupos de Trabalho →
+                  Ver Coordenações →
                 </Link>
                 <Link to="/eventos" className="btn btn-outline">
                   Nossos Eventos
@@ -114,10 +114,10 @@ const SobrePage = () => {
             Sete eixos de atuação colaborativa
           </h2>
           <p className="section-desc reveal d2">
-            A Bibliomemojus é estruturada em 7 Grupos de Trabalho que atuam em
-            eixos estratégicos com Planos de Ação, Calendários próprios e
-            produção de conteúdo especializado. A rede reúne bibliotecas de
-            todos os cinco ramos do Poder Judiciário brasileiro.
+            A Bibliomemojus é estruturada em 7 Coordenações que atuam em eixos
+            estratégicos com Planos de Ação, Calendários próprios e produção de
+            conteúdo especializado. A rede reúne bibliotecas de todos os cinco
+            ramos do Poder Judiciário brasileiro.
           </p>
           <div
             className="reveal d3"
@@ -129,13 +129,13 @@ const SobrePage = () => {
             }}
           >
             {[
-              { num: "GT1", name: "Gestão", slug: "gt1" },
-              { num: "GT2", name: "Memória", slug: "gt2" },
-              { num: "GT3", name: "Redes", slug: "gt3" },
-              { num: "GT4", name: "Biblioteca Digital", slug: "gt4" },
-              { num: "GT5", name: "Inovação", slug: "gt5" },
-              { num: "GT6", name: "Agenda 2030", slug: "gt6" },
-              { num: "GT7", name: "Capacitação", slug: "gt7" },
+              { num: "Coord. 1", name: "Gestão", slug: "gt1" },
+              { num: "Coord. 2", name: "Memória", slug: "gt2" },
+              { num: "Coord. 3", name: "Redes", slug: "gt3" },
+              { num: "Coord. 4", name: "Biblioteca Digital", slug: "gt4" },
+              { num: "Coord. 5", name: "Inovação", slug: "gt5" },
+              { num: "Coord. 6", name: "Agenda 2030", slug: "gt6" },
+              { num: "Coord. 7", name: "Capacitação", slug: "gt7" },
             ].map(gt => (
               <Link
                 key={gt.slug}
@@ -189,7 +189,7 @@ const SobrePage = () => {
               <ul className="goals reveal d2">
                 {[
                   "Criada em 16 de maio de 2022 no II Encontro Nacional de Memória do Poder Judiciário",
-                  "7 Grupos de Trabalho ativos com Planos de Ação e Calendários próprios",
+                  "7 Coordenações ativas com Planos de Ação e Calendários próprios",
                   "3 edições do ENABIJUD realizadas com participação nacional",
                   "Primeiro diagnóstico situacional nacional das bibliotecas judiciárias",
                   "Integração com os cinco ramos do Poder Judiciário brasileiro",

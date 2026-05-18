@@ -48,10 +48,10 @@ const GTPage = ({ gt, prev, next }) => {
         <div className="orb orb-1" style={{ opacity: 0.6 }} />
         <div className="page-hero-inner">
           <Link to="/#grupos" className="back-link">
-            ← Grupos de Trabalho
+            ← Coordenações
           </Link>
           <div>
-            <span className="gt-num-badge">GT {gt.num}</span>
+            <span className="gt-num-badge">Coord. {gt.num}</span>
           </div>
           <h1>{gt.name}</h1>
           <p className="page-hero-sub">{gt.shortDesc}</p>
@@ -68,17 +68,17 @@ const GTPage = ({ gt, prev, next }) => {
         <div className="section-inner">
           <div className="about-grid">
             <div className="gt-content reveal">
-              <p className="tag-label">Sobre o GT {gt.num}</p>
+              <p className="tag-label">Sobre a Coord. {gt.num}</p>
               <h2 className="section-title">{gt.name}</h2>
               <p>{gt.longDesc}</p>
               <p>
-                O grupo se reúne periodicamente para desenvolver seu Plano de
-                Ação, compartilhar experiências e produzir materiais que
+                A coordenação se reúne periodicamente para desenvolver seu Plano
+                de Ação, compartilhar experiências e produzir materiais que
                 fortalecem as bibliotecas judiciárias em todo o Brasil.
               </p>
               <div style={{ marginTop: "28px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
                 <Link to="/#grupos" className="btn btn-outline">
-                  ← Todos os GTs
+                  ← Todas as Coordenações
                 </Link>
               </div>
             </div>
@@ -106,7 +106,7 @@ const GTPage = ({ gt, prev, next }) => {
             className="section-title reveal d1"
             style={{ fontSize: "clamp(20px,2.5vw,32px)" }}
           >
-            Materiais produzidos pelo GT
+            Materiais produzidos pela Coordenação
           </h3>
           <div className="resource-grid">
             {gt.resources.map((res, i) => (
@@ -124,18 +124,18 @@ const GTPage = ({ gt, prev, next }) => {
             className="section-title reveal d1"
             style={{ fontSize: "clamp(20px,2.5vw,32px)" }}
           >
-            Agenda do GT {gt.num}
+            Agenda da Coord. {gt.num}
           </h3>
 
           {gt.calendarEmbedUrl ? (
             <div className="gt-calendar-wrap reveal d2">
               <iframe
                 src={gt.calendarEmbedUrl}
-                title={`Calendário do GT ${gt.num} — ${gt.name}`}
+                title={`Calendário da Coord. ${gt.num} — ${gt.name}`}
                 className="gt-calendar-iframe"
                 style={{ border: "none" }}
                 scrolling="no"
-                aria-label={`Calendário do GT ${gt.num}`}
+                aria-label={`Calendário da Coord. ${gt.num}`}
               />
             </div>
           ) : (
@@ -143,7 +143,7 @@ const GTPage = ({ gt, prev, next }) => {
               <span className="gt-calendar-ph-icon" aria-hidden="true">📅</span>
               <p className="gt-calendar-ph-title">Calendário em configuração</p>
               <p className="gt-calendar-ph-sub">
-                A agenda do GT {gt.num} será disponibilizada em breve.
+                A agenda da Coord. {gt.num} será disponibilizada em breve.
                 Entre em contato para obter informações sobre os próximos encontros.
               </p>
               <a
@@ -179,17 +179,17 @@ const GTPage = ({ gt, prev, next }) => {
         >
           {prev ? (
             <Link to={`/grupos/${prev.slug}`} className="btn btn-outline">
-              ← GT {prev.num}: {prev.name}
+              ← Coord. {prev.num}: {prev.name}
             </Link>
           ) : (
             <span />
           )}
           <Link to="/#grupos" className="btn btn-dark">
-            Todos os Grupos
+            Todas as Coordenações
           </Link>
           {next ? (
             <Link to={`/grupos/${next.slug}`} className="btn btn-outline">
-              GT {next.num}: {next.name} →
+              Coord. {next.num}: {next.name} →
             </Link>
           ) : (
             <span />

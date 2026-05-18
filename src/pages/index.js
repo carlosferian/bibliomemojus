@@ -140,7 +140,7 @@ const IndexPage = () => {
             </p>
             <div className="hero-actions">
               <Link to="/#grupos" className="btn btn-primary">
-                Grupos de Trabalho →
+                Coordenações →
               </Link>
               <Link to="/#sobre" className="btn btn-ghost">
                 Quem somos
@@ -153,7 +153,7 @@ const IndexPage = () => {
               <span className="hs-num">
                 <span className="cnt" data-target="7">0</span>
               </span>
-              <span className="hs-desc">Grupos de Trabalho ativos</span>
+              <span className="hs-desc">Coordenações ativas</span>
             </div>
             <div className="hs-item">
               <span className="hs-num">
@@ -232,7 +232,7 @@ const IndexPage = () => {
               </div>
               <div className="reveal d3" style={{ marginTop: "28px" }}>
                 <Link to="/#grupos" className="btn btn-primary">
-                  Ver Grupos de Trabalho →
+                  Ver Coordenações →
                 </Link>
               </div>
             </div>
@@ -259,16 +259,16 @@ const IndexPage = () => {
         </div>
       </section>
 
-      {/* GRUPOS DE TRABALHO */}
+      {/* COORDENAÇÕES */}
       <section className="section gts" id="grupos">
         <div className="section-inner">
-          <p className="tag-label reveal">Grupos de Trabalho</p>
+          <p className="tag-label reveal">Coordenações</p>
           <h2 className="section-title reveal d1">
             Sete eixos de atuação colaborativa
           </h2>
           <p className="section-desc reveal d2">
-            Cada GT atua em um eixo estratégico com Planos de Ação, Calendários
-            próprios e produção de conteúdo especializado.
+            Cada Coordenação atua em um eixo estratégico com Planos de Ação,
+            Calendários próprios e produção de conteúdo especializado.
           </p>
           <div className="gt-grid">
             {GTS.map((gt, i) => (
@@ -277,7 +277,7 @@ const IndexPage = () => {
                 className={`gt-card reveal d${(i % 4) + 1}`}
                 to={`/grupos/${gt.slug}`}
               >
-                <p className="gt-num">GT {gt.num}</p>
+                <p className="gt-num">Coord. {gt.num}</p>
                 <p className="gt-name">{gt.name}</p>
                 <p className="gt-desc">{gt.shortDesc}</p>
                 <div className="gt-chips">
@@ -339,7 +339,7 @@ const IndexPage = () => {
                   A Bibliomemojus realizou um amplo diagnóstico situacional com
                   total adesão das bibliotecas do Poder Judiciário. Os resultados
                   são apresentados em painéis de Business Intelligence e
-                  nortearão as ações dos sete Grupos de Trabalho.
+                  nortearão as ações das sete Coordenações.
                 </p>
                 <p>
                   Além do diagnóstico, a rede produz publicações, relatórios e
@@ -399,11 +399,11 @@ const IndexPage = () => {
               </p>
             </Link>
             <Link className="news-card reveal d2" to="/#grupos">
-              <p className="news-date">Grupos de Trabalho</p>
-              <p className="news-title">Participe de um dos 7 GTs</p>
+              <p className="news-date">Coordenações</p>
+              <p className="news-title">Participe de uma das 7 Coordenações</p>
               <p className="news-excerpt">
-                Os GTs estão ativos e produzindo conteúdo. Veja planos de ação,
-                calendários e materiais.
+                As Coordenações estão ativas e produzindo conteúdo. Veja planos
+                de ação, calendários e materiais.
               </p>
             </Link>
             <Link

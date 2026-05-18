@@ -155,7 +155,7 @@ const EventosPage = () => {
               <ul className="goals reveal d2">
                 {[
                   "Promover o diálogo entre profissionais de bibliotecas judiciárias",
-                  "Apresentar resultados e avanços dos Grupos de Trabalho",
+                  "Apresentar resultados e avanços das Coordenações",
                   "Fortalecer a rede nacional de cooperação entre bibliotecas",
                   "Debater tendências e inovações para o setor",
                   "Conectar os cinco ramos do Poder Judiciário",

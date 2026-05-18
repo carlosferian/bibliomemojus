@@ -38,7 +38,7 @@ const EnquetesPage = () => {
           </h1>
           <p className="page-hero-sub">
             As enquetes da Bibliomemojus coletam opiniões dos profissionais para
-            orientar as ações estratégicas dos Grupos de Trabalho. Sua
+            orientar as ações estratégicas das Coordenações. Sua
             participação é fundamental para moldar o futuro da rede.
           </p>
         </div>
@@ -50,11 +50,11 @@ const EnquetesPage = () => {
             <div>
               <p className="tag-label reveal">Como funcionam</p>
               <h2 className="section-title reveal d1">
-                Enquetes abertas pelos Grupos de Trabalho
+                Enquetes abertas pelas Coordenações
               </h2>
               <div className="about-content reveal d2">
                 <p>
-                  As enquetes são abertas periodicamente pelos Grupos de Trabalho
+                  As enquetes são abertas periodicamente pelas Coordenações
                   da Bibliomemojus para coletar a opinião dos profissionais de
                   bibliotecas judiciárias sobre temas estratégicos relevantes para
                   a rede.
@@ -67,7 +67,7 @@ const EnquetesPage = () => {
                 </div>
                 <p>
                   As enquetes ativas ficam disponíveis conforme abertura pelos
-                  GTs. Para ser notificado quando novas enquetes são abertas,
+                  Coordenações. Para ser notificado quando novas enquetes são abertas,
                   entre em contato com a coordenação da rede pelo e-mail abaixo.
                 </p>
               </div>
@@ -82,7 +82,7 @@ const EnquetesPage = () => {
                   Receber avisos de enquetes →
                 </a>
                 <Link to="/#grupos" className="btn btn-outline">
-                  Ver Grupos de Trabalho
+                  Ver Coordenações
                 </Link>
               </div>
             </div>
@@ -90,7 +90,7 @@ const EnquetesPage = () => {
               <p className="tag-label reveal d1">Por que participar?</p>
               <ul className="goals reveal d2">
                 {[
-                  "Influenciar diretamente as prioridades dos Grupos de Trabalho",
+                  "Influenciar diretamente as prioridades das Coordenações",
                   "Contribuir com sua experiência profissional para toda a rede",
                   "Ajudar a mapear as necessidades das bibliotecas judiciárias",
                   "Fortalecer a cultura colaborativa e participativa da rede",
@@ -116,7 +116,7 @@ const EnquetesPage = () => {
             Fique atento às próximas enquetes
           </h2>
           <p className="section-desc reveal d2" style={{ maxWidth: "600px", margin: "0 auto 32px" }}>
-            As enquetes são abertas conforme necessidade dos GTs. Para ser
+            As enquetes são abertas conforme necessidade das Coordenações. Para ser
             avisado quando uma nova enquete estiver disponível, envie um e-mail
             para{" "}
             <a href="mailto:bibliomemojus@gmail.com">
@@ -153,7 +153,7 @@ const EnquetesPage = () => {
                 marginBottom: "24px",
               }}
             >
-              As enquetes são publicadas pelos Grupos de Trabalho conforme
+              As enquetes são publicadas pelas Coordenações conforme
               abertura. Fique atento aos comunicados da rede.
             </p>
             <a href="mailto:bibliomemojus@gmail.com" className="btn btn-primary">
@@ -165,13 +165,13 @@ const EnquetesPage = () => {
 
       <div className="enquete-strip">
         <div className="enquete-strip-inner reveal">
-          <h3>Conheça os Grupos de Trabalho</h3>
+          <h3>Conheça as Coordenações</h3>
           <p>
-            Os GTs são responsáveis por abrir as enquetes. Conheça cada grupo e
-            suas áreas de atuação.
+            As Coordenações são responsáveis por abrir as enquetes. Conheça
+            cada uma e suas áreas de atuação.
           </p>
           <Link to="/#grupos" className="btn btn-primary">
-            Ver todos os GTs →
+            Ver todas as Coordenações →
           </Link>
         </div>
       </div>

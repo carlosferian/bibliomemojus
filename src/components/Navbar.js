@@ -72,7 +72,7 @@ const Navbar = ({ activePage }) => {
           <Link to="/" className={isActive("inicio")} onClick={close}>Início</Link>
           <Link to="/sobre" className={isActive("sobre")} onClick={close}>Sobre</Link>
           <Link to="/quem-somos" className={isActive("quem-somos")} onClick={close}>Coordenação</Link>
-          <Link to="/#grupos" className={isActive("grupos")} onClick={close}>Grupos de Trabalho</Link>
+          <Link to="/#grupos" className={isActive("grupos")} onClick={close}>Coordenações</Link>
           <Link to="/eventos" className={isActive("eventos")} onClick={close}>Eventos</Link>
 
           {/* ── Dropdown Projetos ── */}

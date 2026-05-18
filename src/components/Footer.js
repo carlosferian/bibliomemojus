@@ -26,15 +26,15 @@ const Footer = () => (
           </ul>
         </div>
         <div className="footer-col">
-          <h4>Grupos de Trabalho</h4>
+          <h4>Coordenações</h4>
           <ul>
-            <li><Link to="/grupos/gt1">GT1 — Gestão</Link></li>
-            <li><Link to="/grupos/gt2">GT2 — Memória</Link></li>
-            <li><Link to="/grupos/gt3">GT3 — Redes</Link></li>
-            <li><Link to="/grupos/gt4">GT4 — Biblioteca Digital</Link></li>
-            <li><Link to="/grupos/gt5">GT5 — Inovação</Link></li>
-            <li><Link to="/grupos/gt6">GT6 — Agenda 2030</Link></li>
-            <li><Link to="/grupos/gt7">GT7 — Capacitação</Link></li>
+            <li><Link to="/grupos/gt1">Coord. 1 — Gestão</Link></li>
+            <li><Link to="/grupos/gt2">Coord. 2 — Memória</Link></li>
+            <li><Link to="/grupos/gt3">Coord. 3 — Redes</Link></li>
+            <li><Link to="/grupos/gt4">Coord. 4 — Biblioteca Digital</Link></li>
+            <li><Link to="/grupos/gt5">Coord. 5 — Inovação</Link></li>
+            <li><Link to="/grupos/gt6">Coord. 6 — Agenda 2030</Link></li>
+            <li><Link to="/grupos/gt7">Coord. 7 — Capacitação</Link></li>
           </ul>
         </div>
         <div className="footer-col">
