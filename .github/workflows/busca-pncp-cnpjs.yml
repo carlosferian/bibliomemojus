@@ -1,0 +1,54 @@
+name: Busca PNCP por CNPJs — Bibliotecas Judiciárias
+
+# Roda sob demanda (workflow_dispatch) para consultar CNPJs específicos
+# e salvar os resultados como artefato para download.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  busca:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Executar busca PNCP por CNPJs
+        id: busca
+        run: node scripts/buscar-pncp-cnpjs.js
+
+      - name: Salvar resultados como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-pncp-${{ github.run_id }}
+          path: scripts/resultados-pncp.json
+          retention-days: 30
+
+      - name: Resumo dos resultados
+        run: |
+          TOTAL=$(node -e "const d=require('./scripts/resultados-pncp.json'); console.log(d.length)")
+          echo "## Resultados da busca PNCP" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Total de novos artefatos encontrados:** $TOTAL" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          node -e "
+            const d = require('./scripts/resultados-pncp.json');
+            if (d.length === 0) { console.log('Nenhum artefato novo encontrado.'); process.exit(0); }
+            console.log('| # | Órgão | UF | Tipo | Data | Título | URL |');
+            console.log('|---|-------|----|------|------|--------|-----|');
+            d.forEach((item, i) => {
+              const titulo = (item.titulo || '').slice(0, 60).replace(/\\|/g, '-');
+              const url = item.url || '';
+              console.log(\`| \${i+1} | \${item.orgao || ''} | \${item.uf || ''} | \${item.tipo || ''} | \${item.data || ''} | \${titulo} | \${url} |\`);
+            });
+          " >> $GITHUB_STEP_SUMMARY
