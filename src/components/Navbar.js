@@ -16,10 +16,12 @@ const MENU_OPEN_STYLE = {
 }
 
 const Navbar = ({ activePage }) => {
-  const navRef        = useRef(null)
-  const dropRef       = useRef(null)
-  const [menuOpen,    setMenuOpen]    = useState(false)
-  const [dropOpen,    setDropOpen]    = useState(false)
+  const navRef          = useRef(null)
+  const dropRef         = useRef(null)
+  const dropCoordsRef   = useRef(null)
+  const [menuOpen,      setMenuOpen]      = useState(false)
+  const [dropOpen,      setDropOpen]      = useState(false)
+  const [dropCoordsOpen, setDropCoordsOpen] = useState(false)
 
   useEffect(() => {
     const nav = navRef.current
@@ -31,18 +33,19 @@ const Navbar = ({ activePage }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Fecha dropdown ao clicar fora (desktop)
   useEffect(() => {
     const handler = e => {
       if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false)
+      if (dropCoordsRef.current && !dropCoordsRef.current.contains(e.target)) setDropCoordsOpen(false)
     }
     document.addEventListener("mousedown", handler)
     return () => document.removeEventListener("mousedown", handler)
   }, [])
 
-  const close = () => { setMenuOpen(false); setDropOpen(false) }
+  const close = () => { setMenuOpen(false); setDropOpen(false); setDropCoordsOpen(false) }
   const isActive = page => (activePage === page ? "active" : "")
-  const isProjetosActive = activePage === "projetos" || activePage === "refarq" ? "active" : ""
+  const isProjetosActive = ["projetos", "refarq", "ferramentas"].includes(activePage) ? "active" : ""
+  const isCoordsActive   = ["grupos", "quem-somos"].includes(activePage) ? "active" : ""
 
   return (
     <nav
@@ -71,13 +74,60 @@ const Navbar = ({ activePage }) => {
         >
           <Link to="/" className={isActive("inicio")} onClick={close}>Início</Link>
           <Link to="/sobre" className={isActive("sobre")} onClick={close}>Sobre</Link>
-          <Link to="/quem-somos" className={isActive("quem-somos")} onClick={close}>Coordenação</Link>
-          <Link to="/#grupos" className={isActive("grupos")} onClick={close}>Coordenações</Link>
+
+          {/* ── Dropdown Coordenações ── */}
+          {menuOpen ? (
+            <>
+              <button
+                className={`nav-dropdown-btn${isCoordsActive ? " active" : ""}`}
+                onClick={() => setDropCoordsOpen(o => !o)}
+                aria-expanded={dropCoordsOpen}
+              >
+                Coordenações <span className={`nav-dropdown-caret${dropCoordsOpen ? " is-open" : ""}`} aria-hidden="true">▾</span>
+              </button>
+              {dropCoordsOpen && (
+                <div className="nav-dropdown-mobile">
+                  <Link to="/#grupos" className={`nav-sub-link${isActive("grupos")}`} onClick={close}>
+                    As Coordenações
+                  </Link>
+                  <Link to="/quem-somos" className={`nav-sub-link${isActive("quem-somos")}`} onClick={close}>
+                    Coordenadores
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            <div
+              className="nav-dropdown-wrap"
+              ref={dropCoordsRef}
+              onMouseEnter={() => setDropCoordsOpen(true)}
+              onMouseLeave={() => setDropCoordsOpen(false)}
+            >
+              <button
+                className={`nav-dropdown-btn${isCoordsActive ? " active" : ""}`}
+                aria-haspopup="true"
+                aria-expanded={dropCoordsOpen}
+                onClick={() => setDropCoordsOpen(o => !o)}
+              >
+                Coordenações <span className={`nav-dropdown-caret${dropCoordsOpen ? " is-open" : ""}`} aria-hidden="true">▾</span>
+              </button>
+              {dropCoordsOpen && (
+                <div className="nav-dropdown-panel" role="menu">
+                  <Link to="/#grupos" role="menuitem" className={isActive("grupos")} onClick={close}>
+                    As Coordenações
+                  </Link>
+                  <Link to="/quem-somos" role="menuitem" className={isActive("quem-somos")} onClick={close}>
+                    Coordenadores
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
+
           <Link to="/eventos" className={isActive("eventos")} onClick={close}>Eventos</Link>
 
           {/* ── Dropdown Projetos ── */}
           {menuOpen ? (
-            /* Mobile: expand inline */
             <>
               <button
                 className={`nav-dropdown-btn${isProjetosActive ? " active" : ""}`}
@@ -89,16 +139,18 @@ const Navbar = ({ activePage }) => {
               {dropOpen && (
                 <div className="nav-dropdown-mobile">
                   <Link to="/projetos" className={`nav-sub-link${isActive("projetos")}`} onClick={close}>
-                    Iniciativas & Projetos
+                    Iniciativas &amp; Projetos
                   </Link>
                   <Link to="/refarq" className={`nav-sub-link${isActive("refarq")}`} onClick={close}>
                     Banco de Contratações
+                  </Link>
+                  <Link to="/ferramentas" className={`nav-sub-link${isActive("ferramentas")}`} onClick={close}>
+                    Ferramentas
                   </Link>
                 </div>
               )}
             </>
           ) : (
-            /* Desktop: hover dropdown */
             <div
               className="nav-dropdown-wrap"
               ref={dropRef}
@@ -116,10 +168,13 @@ const Navbar = ({ activePage }) => {
               {dropOpen && (
                 <div className="nav-dropdown-panel" role="menu">
                   <Link to="/projetos" role="menuitem" className={isActive("projetos")} onClick={close}>
-                    Iniciativas & Projetos
+                    Iniciativas &amp; Projetos
                   </Link>
                   <Link to="/refarq" role="menuitem" className={isActive("refarq")} onClick={close}>
                     Banco de Contratações
+                  </Link>
+                  <Link to="/ferramentas" role="menuitem" className={isActive("ferramentas")} onClick={close}>
+                    Ferramentas
                   </Link>
                 </div>
               )}

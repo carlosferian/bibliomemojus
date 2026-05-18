@@ -1,0 +1,131 @@
+export const FERRAMENTAS = [
+  {
+    categoria: "Classificação & Catalogação",
+    icone: "📚",
+    items: [
+      {
+        nome: "Classifica-AI",
+        url: "https://www.pedroandretta.info/index/classificaai/",
+        descricao: "Inteligência artificial para sugestão de notações CDU, CDD e Colon Classification. Ideal para o ensino e a prática supervisionada de classificação bibliográfica.",
+        icone: "🤖",
+        nota: "Requer conta Google",
+      },
+      {
+        nome: "CDU Online — IBICT",
+        url: "https://cdu.ibict.br",
+        descricao: "Tabelas completas da Classificação Decimal Universal (CDU) em português, em formato digital pela primeira vez. Desenvolvido pelo IBICT com recursos de busca textual.",
+        icone: "🔢",
+        nota: "Requer cadastro gratuito",
+      },
+      {
+        nome: "Tabela Cutter",
+        url: "https://www.tabelacutter.com/",
+        descricao: "Gerador online de número Cutter para autores. Ferramenta prática e direta para obter a notação de autoria em acervos bibliográficos.",
+        icone: "✂️",
+        nota: null,
+      },
+      {
+        nome: "Gerador de Ficha Catalográfica",
+        url: "http://fichacatalografica.ufc.br/",
+        descricao: "Sistema de geração automatizada de fichas catalográficas conforme as normas ABNT, desenvolvido pela Universidade Federal do Ceará.",
+        icone: "📄",
+        nota: null,
+      },
+    ],
+  },
+  {
+    categoria: "Pesquisa Jurídica",
+    icone: "⚖️",
+    items: [
+      {
+        nome: "RVBI — Catálogo Coletivo",
+        url: "https://catalogo.senado.leg.br",
+        descricao: "Catálogo coletivo de quase 700 mil documentos de 11 bibliotecas do Poder Público. Coordenado pelo Senado Federal, com ênfase em Direito e Ciências Sociais.",
+        icone: "🏛️",
+        nota: null,
+      },
+      {
+        nome: "BDJur / Consórcio BDJur",
+        url: "https://bdjur.stj.jus.br",
+        descricao: "Biblioteca Digital Jurídica do STJ e consórcio de tribunais federais e estaduais. Doutrina, artigos e produção institucional em acesso aberto.",
+        icone: "📖",
+        nota: null,
+      },
+      {
+        nome: "LeXML",
+        url: "https://www.lexml.gov.br",
+        descricao: "Agregador de legislação, jurisprudência e doutrina de todos os entes federativos. Reúne mais de 6,5 milhões de documentos jurídicos e legislativos.",
+        icone: "📜",
+        nota: null,
+      },
+      {
+        nome: "Vocabulário Jurídico STJ",
+        url: "https://scon.stj.jus.br/SCON/thesaurus/",
+        descricao: "Thesaurus de terminologia jurídica do STJ. Essencial para indexação consistente e recuperação da informação em acervos e bases de dados jurídicos.",
+        icone: "🏷️",
+        nota: null,
+      },
+      {
+        nome: "Vocabulário Controlado RVBI",
+        url: "https://www2.senado.leg.br/bdsf/handle/id/81842",
+        descricao: "Linguagem documental da Rede Virtual de Bibliotecas com cerca de 10 mil descritores. Padrão de indexação para bibliotecas do Legislativo e Judiciário.",
+        icone: "📝",
+        nota: null,
+      },
+    ],
+  },
+  {
+    categoria: "Periódicos & Repositórios",
+    icone: "🗂️",
+    items: [
+      {
+        nome: "Portal de Periódicos CAPES",
+        url: "https://www.periodicos.capes.gov.br/",
+        descricao: "Acesso a mais de 21.500 revistas internacionais e 126 bases de dados em todas as áreas do conhecimento. Gratuito em instituições participantes.",
+        icone: "📰",
+        nota: "Acesso via IP institucional",
+      },
+      {
+        nome: "BDTD — Teses e Dissertações",
+        url: "https://bdtd.ibict.br",
+        descricao: "Biblioteca Digital Brasileira de Teses e Dissertações do IBICT. Repositório nacional de produção científica em acesso aberto.",
+        icone: "🎓",
+        nota: null,
+      },
+      {
+        nome: "Oasis.br",
+        url: "https://oasisbr.ibict.br",
+        descricao: "Metabuscador de produção científica e técnica brasileira em acesso aberto. Agrega conteúdo de repositórios institucionais de todo o país.",
+        icone: "🔍",
+        nota: null,
+      },
+    ],
+  },
+  {
+    categoria: "Bases Jurídicas Oficiais",
+    icone: "🔎",
+    items: [
+      {
+        nome: "Jurisprudência STJ",
+        url: "https://processo.stj.jus.br/SCON/",
+        descricao: "Sistema de busca de jurisprudência do STJ. Acórdãos, decisões monocráticas, súmulas e informativos.",
+        icone: "⚖️",
+        nota: null,
+      },
+      {
+        nome: "Jurisprudência STF",
+        url: "https://portal.stf.jus.br/jurisprudencia/",
+        descricao: "Pesquisa de jurisprudência do Supremo Tribunal Federal. Acórdãos, súmulas vinculantes e informativos de jurisprudência.",
+        icone: "🏛️",
+        nota: null,
+      },
+      {
+        nome: "Legislação Federal — Senado",
+        url: "https://legis.senado.leg.br/norma",
+        descricao: "Base de legislação federal completa pelo Senado Federal. Leis, decretos e atos normativos com atualização permanente.",
+        icone: "📋",
+        nota: null,
+      },
+    ],
+  },
+]

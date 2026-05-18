@@ -21,6 +21,7 @@ const Footer = () => (
           <ul>
             <li><Link to="/sobre">Quem Somos</Link></li>
             <li><Link to="/projetos">Publicações</Link></li>
+            <li><Link to="/ferramentas">Ferramentas</Link></li>
             <li><a href="mailto:bibliomemojus@gmail.com">Fale Conosco</a></li>
             <li><Link to="/enquetes">Enquetes</Link></li>
           </ul>
