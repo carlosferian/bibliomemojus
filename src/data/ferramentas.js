@@ -45,6 +45,13 @@ export const FERRAMENTAS = [
         nota: null,
       },
       {
+        nome: "Sophia — Acervo JF3R",
+        url: "https://biblioteca.sophia.com.br/terminal/9549",
+        descricao: "Catálogo online do acervo da Biblioteca da Justiça Federal da 3ª Região (Seção Judiciária de São Paulo). Busca por título, autor, assunto e mais.",
+        icone: "🔍",
+        nota: null,
+      },
+      {
         nome: "BDJur / Consórcio BDJur",
         url: "https://bdjur.stj.jus.br",
         descricao: "Biblioteca Digital Jurídica do STJ e consórcio de tribunais federais e estaduais. Doutrina, artigos e produção institucional em acesso aberto.",
@@ -97,6 +104,13 @@ export const FERRAMENTAS = [
         url: "https://oasisbr.ibict.br",
         descricao: "Metabuscador de produção científica e técnica brasileira em acesso aberto. Agrega conteúdo de repositórios institucionais de todo o país.",
         icone: "🔍",
+        nota: null,
+      },
+      {
+        nome: "Prospecção de Inovação — JF3R",
+        url: "https://www.jfsp.jus.br/bibliotecas/pesquisa",
+        descricao: "Boletim semanal de curadoria sobre inovação, inteligência artificial e tecnologia no Judiciário, produzido pela Biblioteca da Seção Judiciária de São Paulo.",
+        icone: "📡",
         nota: null,
       },
     ],
