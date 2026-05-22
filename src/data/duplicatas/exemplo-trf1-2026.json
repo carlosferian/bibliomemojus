@@ -1,0 +1,65 @@
+{
+  "id": "trf1-2026-01",
+  "biblioteca": "Biblioteca do TRF1",
+  "orgao": "Tribunal Regional Federal da 1ª Região",
+  "uf": "DF",
+  "esfera": "federal",
+  "contato": "biblioteca@trf1.jus.br",
+  "tituloEdital": "Edital de Duplicatas — 1º Lote 2026",
+  "dataPublicacao": "2026-04-01",
+  "prazo": "2026-06-30",
+  "status": "aberto",
+  "observacoes": "Retirada presencial mediante agendamento ou pelo Correios (frete por conta do solicitante). Manifestações por e-mail.",
+  "livros": [
+    {
+      "titulo": "Curso de Direito Constitucional",
+      "autor": "Gilmar Ferreira Mendes; Paulo Gustavo Gonet Branco",
+      "isbn": "9788530982393",
+      "editora": "Saraiva",
+      "ano": "2019",
+      "exemplares": 2,
+      "condicao": "bom",
+      "obs": ""
+    },
+    {
+      "titulo": "Direito Civil Brasileiro — Vol. 1: Parte Geral",
+      "autor": "Carlos Roberto Gonçalves",
+      "isbn": "9788502221345",
+      "editora": "Saraiva",
+      "ano": "2020",
+      "exemplares": 1,
+      "condicao": "regular",
+      "obs": "Lombada levemente danificada"
+    },
+    {
+      "titulo": "Código de Processo Civil Comentado",
+      "autor": "Nelson Nery Junior; Rosa Maria de Andrade Nery",
+      "isbn": "9788520371254",
+      "editora": "RT",
+      "ano": "2018",
+      "exemplares": 3,
+      "condicao": "bom",
+      "obs": ""
+    },
+    {
+      "titulo": "Manual de Direito Administrativo",
+      "autor": "José dos Santos Carvalho Filho",
+      "isbn": "9788597020977",
+      "editora": "Atlas",
+      "ano": "2021",
+      "exemplares": 1,
+      "condicao": "ótimo",
+      "obs": ""
+    },
+    {
+      "titulo": "Processo Penal",
+      "autor": "Fernando Capez",
+      "isbn": "9788502221789",
+      "editora": "Saraiva",
+      "ano": "2017",
+      "exemplares": 2,
+      "condicao": "regular",
+      "obs": ""
+    }
+  ]
+}

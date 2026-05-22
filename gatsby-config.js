@@ -36,6 +36,10 @@ module.exports = {
       options: { name: `artefatos`, path: `${__dirname}/src/data/artefatos` },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `duplicatas`, path: `${__dirname}/src/data/duplicatas` },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `BIBLIOMEMOJUS`,
