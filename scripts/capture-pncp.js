@@ -257,7 +257,12 @@ async function main() {
     rawList = await buscarArtefatos()
   } catch (err) {
     console.error("Erro ao buscar API PNCP:", err.message)
-    process.exit(1)
+    // Erros temporários do servidor (502, 503, 429) não devem falhar o workflow.
+    // Saímos com 0 e sinalizamos created=0 para o workflow não abrir PR vazio.
+    if (process.env.GITHUB_OUTPUT) {
+      fs.appendFileSync(process.env.GITHUB_OUTPUT, "created=0\n")
+    }
+    process.exit(0)
   }
 
   let created = 0
