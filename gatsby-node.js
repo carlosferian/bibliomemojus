@@ -3,7 +3,6 @@ const path = require("path")
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
-  // Garante campos de membros no schema mesmo sem arquivos .md em content/membros/
   createTypes(`
     type MarkdownRemarkFrontmatter {
       ativo: Boolean
@@ -16,6 +15,30 @@ exports.createSchemaCustomization = ({ actions }) => {
       mini_bio: String
       linkedin: String
       foto: String
+    }
+    type DuplicatasJsonLivro {
+      titulo: String
+      autor: String
+      isbn: String
+      editora: String
+      ano: String
+      exemplares: Int
+      condicao: String
+      obs: String
+    }
+    type DuplicatasJson implements Node {
+      id: ID!
+      biblioteca: String
+      orgao: String
+      uf: String
+      esfera: String
+      contato: String
+      tituloEdital: String
+      dataPublicacao: String
+      prazo: String
+      status: String
+      observacoes: String
+      livros: [DuplicatasJsonLivro]
     }
   `)
 }

@@ -44,7 +44,7 @@ const Navbar = ({ activePage }) => {
 
   const close = () => { setMenuOpen(false); setDropOpen(false); setDropCoordsOpen(false) }
   const isActive = page => (activePage === page ? "active" : "")
-  const isProjetosActive = ["projetos", "refarq", "ferramentas"].includes(activePage) ? "active" : ""
+  const isProjetosActive = ["projetos", "refarq", "ferramentas", "duplicatas"].includes(activePage) ? "active" : ""
   const isCoordsActive   = ["grupos", "quem-somos"].includes(activePage) ? "active" : ""
 
   return (
@@ -147,6 +147,9 @@ const Navbar = ({ activePage }) => {
                   <Link to="/ferramentas" className={`nav-sub-link${isActive("ferramentas")}`} onClick={close}>
                     Ferramentas
                   </Link>
+                  <Link to="/duplicatas" className={`nav-sub-link${isActive("duplicatas")}`} onClick={close}>
+                    Portal de Duplicatas
+                  </Link>
                 </div>
               )}
             </>
@@ -175,6 +178,9 @@ const Navbar = ({ activePage }) => {
                   </Link>
                   <Link to="/ferramentas" role="menuitem" className={isActive("ferramentas")} onClick={close}>
                     Ferramentas
+                  </Link>
+                  <Link to="/duplicatas" role="menuitem" className={isActive("duplicatas")} onClick={close}>
+                    Portal de Duplicatas
                   </Link>
                 </div>
               )}
