@@ -189,7 +189,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 
 /* ── GTs GRID ── */
 .gts { background: var(--cream); }
-.gt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(224px, 1fr)); gap: 12px; }
+.gt-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 .gt-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 20px 20px; text-decoration: none; display: block; position: relative; overflow: hidden; transition: transform .25s cubic-bezier(.22,.68,0,1.2), box-shadow .25s, border-color .25s; }
 .gt-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber-lt); transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.22,.68,0,1.2); }
 .gt-card:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(22,34,47,.09); border-color: rgba(184,149,80,.3); }
@@ -552,6 +552,7 @@ footer { background: #0D1720; color: rgba(255,255,255,.55); padding: 60px 28px 3
   .nav-links { display: none; }
   .hamburger { display: flex !important; }
   .resource-grid { grid-template-columns: repeat(2, 1fr); }
+  .gt-grid { grid-template-columns: repeat(2, 1fr); }
   .gt-calendar-iframe { height: 400px; }
   .refarq-grid { grid-template-columns: repeat(2, 1fr); }
   .refarq-sobre-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -568,6 +569,7 @@ footer { background: #0D1720; color: rgba(255,255,255,.55); padding: 60px 28px 3
   .carousel-btn { display: none; }
   .destaques-ver-todas { display: none; }
   .resource-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .gt-grid { grid-template-columns: 1fr; }
   .gt-calendar-iframe { height: 320px; }
   .filter-selects { flex-direction: column; align-items: flex-start; gap: 8px; }
   .filter-select-group { width: 100%; }
