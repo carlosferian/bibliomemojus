@@ -129,7 +129,7 @@ const SobrePage = () => {
             }}
           >
             {[
-              { num: "Coord. 1", name: "Gestão de Bibliotecas Físicas e Digitais", slug: "gt1" },
+              { num: "Coord. 1", name: "Gestão", slug: "gt1" },
               { num: "Coord. 2", name: "Memória", slug: "gt2" },
               { num: "Coord. 3", name: "Inovação e Tecnologia", slug: "gt3" },
               { num: "Coord. 4", name: "Direitos Humanos e Agenda 2030", slug: "gt4" },

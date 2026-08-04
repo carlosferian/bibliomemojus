@@ -2,10 +2,10 @@ export const GTS = [
   {
     num: 1,
     slug: "gt1",
-    name: "Gestão de Bibliotecas Físicas e Digitais",
+    name: "Gestão",
     coordenador: "Luiz Guilherme Martins",
     shortDesc: "Gestão integrada de acervos físicos e digitais nas bibliotecas do Poder Judiciário.",
-    longDesc: "A Coordenação de Gestão de Bibliotecas Físicas e Digitais desenvolve diretrizes, indicadores e melhores práticas para a administração eficiente das bibliotecas judiciárias em suas dimensões presencial e digital. Atua no mapeamento de processos, elaboração de instrumentos normativos e promoção de modelos de gestão integrada adaptados à realidade do Judiciário brasileiro.",
+    longDesc: "A Coordenação de Gestão desenvolve diretrizes, indicadores e melhores práticas para a administração eficiente das bibliotecas judiciárias em suas dimensões presencial e digital. Atua no mapeamento de processos, elaboração de instrumentos normativos e promoção de modelos de gestão integrada adaptados à realidade do Judiciário brasileiro.",
     chips: ["Apresentação", "Plano de Ação", "Vídeos", "Calendário"],
     activities: [
       "Levantamento e análise de modelos de gestão em bibliotecas judiciárias",
